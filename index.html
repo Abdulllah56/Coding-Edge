@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Coding Edge</title>
+  <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="index.css">
+  <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" rel="stylesheet" />
+  <script src="script.js"></script>
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        
+       
+    }
+    .testimonial-carousel-container {
+        width: 80%;
+        padding-top: 2.5pc;
+        justify-content: center;
+        align-items: center;
+        max-width: 800px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    .testimonial-carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    .testimonial-slide {
+        min-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .testimonial-slide p {
+        font-size: 18px;
+        color: rgb(255, 252, 252);
+        margin-bottom: 20px;
+    }
+    .testimonial-client {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .testimonial-client img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .testimonial-client-info {
+        text-align: left;
+    }
+    .testimonial-client-info h4 {
+        margin: 0;
+        font-size: 16px;
+        color: rgb(36, 94, 251);
+    }
+    .testimonial-client-info span {
+        font-size: 14px;
+        color: #777;
+    }
+</style>
+</head>
+
+<body>
+  <!-- NavBar -->
+  <nav class="navbar navbar-expand-lg bg-dark border-botom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">The Coding <span class="text-primary"> Edge</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="About.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Contact.html">Contact</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Blog.html">Blogs</a></li>
+              <li>
+                <a class="dropdown-item" href="WFU.html">Write For Us</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <a class="dropdown-item" href="FAQs.html">FAQs</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="Support.html">Support Us</a>
+          </li>
+        </ul>
+        </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-primary" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+      <div>
+        <button class="btn btn-outline-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+          LogIn
+        </button>
+
+        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+          SignUp
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LogIn modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="loginModalLabel">
+            Login To Coding Edge
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" />
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" />
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="loginRemember" />
+              <label class="form-check-label" for="loginRemember">Remember Me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <div id="loginMessage" class="mt-3"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signupModalLabel">
+            Creat An Account On Coding Edge
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="signupForm">
+            <div class="mb-3">
+              <label for="signupEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" />
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="signupPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="signupPassword" />
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">
+                Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword" />
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="signupRemember" />
+              <label class="form-check-label" for="signupRemember">Remember Me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Create Account
+            </button>
+            <div id="signupMessage" class="mt-3"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel -->
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel"
+    data-bs-interval="5000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        <img
+          src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="d-block w-100 h-400px" alt="..." />
+
+        <div class="carousel-caption d-none d-md-block">
+          <b>
+            <h1 class="heading">Welcome To the Coding Edge</h1>
+          </b>
+          <h3 class="sub-heading">Unleash Your Coding Potential with The Coding Edge</h3>
+          <a href="Services.html"> <button class="start-button">GET STRARTED</button></a>
+        </div>
+
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100"
+          src="https://images.unsplash.com/photo-1555066931-bf19f8fd1085?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="" />
+        <div class="carousel-caption d-none d-md-block">
+          <b>
+            <h1 class=" heading">Coding Mastery</h1>
+          </b>
+          <h3 class="sub-heading">Empowering coders to shape the digital landscape of tomorrow.</h3>
+          <a href="Services.html"> <button class="start-button">GET STRARTED</button></a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="d-block w-100" alt="..." />
+        <div class="carousel-caption d-none d-md-block">
+          <b>
+            <h1 class=" heading">Elevate Your Skills</h1>
+          </b>
+          <h3 class="sub-heading">
+            "Where passion for coding fuels groundbreaking digital
+            transformations."
+          </h3>
+          <a href="Services.html"> <button class="start-button">GET STRARTED</button></a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Courses -->
+ 
+  <h1 class="course-heading text-blue-500 font-medium">Most Popular Courses</h1>
+
+  <div class="courses-container">
+      <div class="course-card">
+          <img class="course-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript Logo">
+          <div class="course-description">
+              <h3>JavaScript is the most popular and powerful programming language in this Era. So what are you waiting for? Enroll Now!</h3>
+          </div>
+          <button class="btn bg-blue-900 hover:bg-blue-800  course-btn">Learn More</button>
+      </div>
+
+      <div class="course-card">
+          <img class="course-img" src="https://i0.wp.com/junilearning.com/wp-content/uploads/2020/06/python-programming-language.webp?fit=800%2C800&ssl=1" alt="Python Logo">
+          <div class="course-description">
+              <h3>Python is one of the most used programming languages. It is known for its simple syntax. It is easy to learn because of its simplicity.</h3>
+          </div>
+          <button class="btn bg-blue-900 hover:bg-blue-800 course-btn ">Learn More</button>
+      </div>
+  </div>
+
+
+  <!-- Why we stand Out -->
+  <section class="text-white body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="text-center mb-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font text-blue-500 mb-4">
+          Why We Stand Out
+        </h1>
+
+        <div class="flex mt-6 justify-center">
+          <div class="w-16 h-1 rounded-full bg-blue-600 inline-flex"></div>
+        </div>
+      </div>
+      <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
+        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
+          <div
+            class="w-25 h-38 inline-flex items-center justify-center rounded-full bg--100 text-indigo-500 mb-5 flex-shrink-0">
+
+            <img class="w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100  flex-shrink-0"
+              src="https://miro.medium.com/v2/resize:fit:1400/1*YZ2fsT9k1CmlMil-Fda0Zg.png" alt="">
+
+
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-blue-800 text-lg title-font font-medium mb-3">
+              Expert Programming Guidance
+            </h2>
+            <p class="leading-relaxed text-base">
+              Get access to a team of experienced programmers who provide
+              comprehensive guidance and support to help you excel in coding
+              and programming.
+            </p>
+            <a class="mt-3 text-blue-800 inline-flex items-center cursor-pointer hover:text-blue-600">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <img class="" w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100
+                  flex-shrink-0" " src="" alt="">
+                  <path d=" M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
+          <div
+            class="w-25 h-38 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
+
+            <circle cx="6" cy="6" r="3"></circle>
+            <circle cx="6" cy="18" r="3"></circle>
+
+            <img class="w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100  flex-shrink-0"
+              src="" alt="">
+
+
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-blue-800 text-lg title-font font-medium mb-3">
+              Wide Range of Resources
+            </h2>
+            <p class="leading-relaxed text-base">
+              Explore a vast library of tips, techniques, and queries that
+              cover various programming languages and frameworks, ensuring you
+              have the resources you need to tackle any coding challenge.
+            </p>
+            <a class="mt-3 text-blue-800 inline-flex items-center cursor-pointer hover:text-blue-600">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
+          <div
+            class="w-25 h-38 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-10 h-10" viewBox="0 0 24 24">
+              <img class="w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100  flex-shrink-0"
+                src="https://www.seoclerk.com/pics/599828-1k4Ve71524487216.png" alt="">
+
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-blue-800 text-lg title-font font-medium mb-3">
+              Interactive Coding Courses
+            </h2>
+            <p class="leading-relaxed text-base">
+              Enroll in interactive coding courses designed to enhance your
+              skills and knowledge. Learn at your own pace and receive
+              personalized feedback to accelerate your growth as a programmer.
+            </p>
+            <a class="mt-3 text-blue-800 inline-flex items-center   cursor-pointer hover:text-blue-600">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <a href="Contact.html"><button
+          class="flex mx-auto mt-16 text-white bg-blue-900 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800 rounded text-lg delay-200">
+          Contact Us
+        </button></a>
+    </div>
+  </section>
+  <br>
+
+<!-- Blogs -->
+
+<h1 class="sm:text-3xl text-2xl font-medium title-font text-primary mb-4">Read Our Blogs</h1>
+
+<div class="row mb-2">
+  <div class="col-md-6 transition-transform duration-500 transform hover:-translate-y-2">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary-emphasis">Understanding</strong>
+        <h3 class="mb-0">Diference between coding and programming</h3>
+        <div class="mb-1 text-gray-600">Aug 12</div>
+        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+        <a href="https://abdullahs-newsletter-b9cf07.beehiiv.com/p/difference-coding-programming" class="icon-link gap-1 icon-link-hover stretched-link hover:text-gray-400" target="_blank">
+          Continue reading
+          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+        </a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+    
+        <img class="bd-placeholder-img role="img" aria-label="Placeholder: Thumbnail h-35 w-35"  src="https://d14b9ctw0m6fid.cloudfront.net/ugblog/wp-content/uploads/2020/09/main-qimg-d44da3cb5f13b1b40769886e5232114c.jpg" alt="Coding and programming Diference"  >
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 transition-transform duration-500 transform hover:-translate-y-2">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary-emphasis">Competition</strong>
+        <h3 class="mb-0">Top five programming languages</h3>
+        <div class="mb-1 text-body-secondary">Aug 11</div>
+        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+        <a href="https://abdullahs-newsletter-b9cf07.beehiiv.com/p/top-five-programming-languages" class="icon-link gap-1 icon-link-hover stretched-link hover:text-gray-400" target="_blank">
+          Continue reading
+          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+        </a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img class="bd-placeholder-img role="img" aria-label="Placeholder: Thumbnail h-35 w-35"  src="https://www.21twelveinteractive.com/wp-content/uploads/2023/09/Top-Web-App-Development-Language-in-2024-1-1.png" alt="Programming languages">
+      </div>
+    </div>
+  </div>
+</div>
+<a href="Blog.html"><button
+  class="flex mx-auto mt-16 text-white bg-blue-900 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800 rounded text-lg delay-200">
+  Read More
+</button></a>
+
+
+
+
+
+  <br>
+
+  <!-- Companies -->
+
+  <h1 class="logo-carousel-title text-primary ">Trusted by the world's most innovative teams</h1>
+  <div class="logo-carousel-container">
+    <div class="logo-carousel-track">
+      <div class="logo-carousel-item"><img src="https://sandaacademy.com/wp-content/uploads/2023/02/Java-Logo.png" alt="Java"></div>
+
+      <div class="logo-carousel-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript"></div>
+
+      <div class="logo-carousel-item"><img src="https://github.blog/wp-content/uploads/2024/07/github-logo.png" alt="GitHub"></div>
+
+      <div class="logo-carousel-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png" alt="Node.js"></div>
+
+      <div class="logo-carousel-item"><img src="https://media.licdn.com/dms/image/C4E12AQEBVCR2SpRr9g/article-cover_image-shrink_720_1280/0/1625909824541?e=2147483647&v=beta&t=Y_zSoI8cPUR3wQvPyYK15PLWpQJJ0si6OvsuXFnIC18" alt="ReactJS"></div>
+
+      <div class="logo-carousel-item"><img src="https://www.digitality.es/img-articulos/ampliadas/que-es-nextjs-y-para-que-sirve-1-1697560678.jpg" alt="NextJS"></div>
+      <!-- Duplicate items to create a seamless loop -->
+      <div class="logo-carousel-item"><img src="https://via.placeholder.com/150x150?text=Java" alt="Java"></div>
+      <div class="logo-carousel-item"><img src="https://via.placeholder.com/150x150?text=JavaScript" alt="JavaScript"></div>
+      <div class="logo-carousel-item"><img src="https://via.placeholder.com/150x150?text=GitHub" alt="GitHub"></div>
+      <div class="logo-carousel-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png" alt="Node.js"></div>
+      <div class="logo-carousel-item"><img src="https://seeklogo.com/images/T/tesla-logo-8068FDA2E7-seeklogo.com.png" alt="NextJS"></div>
+      <div class="logo-carousel-item"><img src="https://media.licdn.com/dms/image/C4E12AQEBVCR2SpRr9g/article-cover_image-shrink_720_1280/0/1625909824541?e=2147483647&v=beta&t=Y_zSoI8cPUR3wQvPyYK15PLWpQJJ0si6OvsuXFnIC18" alt="ReactJS"></div>
+      <div class="logo-carousel-item"><img src="https://www.digitality.es/img-articulos/ampliadas/que-es-nextjs-y-para-que-sirve-1-1697560678.jpg" alt="NextJS"></div>
+      <div class="logo-carousel-item"><img src="https://i0.wp.com/www.vibeprintco.com/wp-content/uploads/2022/02/Tesla-chrome-copy-2.jpg?fit=1800%2C1350&ssl=1" alt="NextJS"></div>
+
+    </div>
+  </div>
+ 
+  </div>
+
+
+
+
+ <br>
+
+  <!-- TESTIMONIAL -->
+  <center>
+    <h1 class="center text-blue-500 mt-9">What Our Students Says</h1>
+  </center>
+ 
+  <center><div class="testimonial-carousel-container">
+    <div class="testimonial-carousel">
+        <div class="testimonial-slide">
+            <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own projects. The community and support are incredible. Thank you, Coding Edge!</p>
+            <div class="testimonial-client">
+                <img src="https://via.placeholder.com/50" alt="Client Photo">
+                <div class="testimonial-client-info">
+                    <h4>J. Doe</h4>
+                    <span>Full Stack Developer</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge is the place where I started. The people who want to get a full understanding of coding should become a part of it.</p>
+            <div class="testimonial-client">
+                <img src="https://m.economictimes.com/thumb/msid-97089587,width-1200,height-900,resizemode-4,imgsize-40518/cristiano-ronaldo.jpg" alt="Client Photo">
+                <div class="testimonial-client-info">
+                    <h4>C. Ronaldo</h4>
+                    <span>The GOAT</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
+            <div class="testimonial-client">
+                <img src="https://static.generated.photos/vue-static/face-generator/landing/wall/14.jpg" alt="Client Photo">
+                <div class="testimonial-client-info">
+                    <h4>A. Smith</h4>
+                    <span>Software Engineer</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own projects. The community and support are incredible. Thank you, Coding Edge!</p>
+            <div class="testimonial-client">
+                <img src="https://data.ipic.ai/images/YlceDYgbJBcXSw7_1712121089.png" alt="Client Photo">
+                <div class="testimonial-client-info">
+                    <h4>J. Doe</h4>
+                    <span>Full Stack Developer</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge is the place where I started. The people who want to get a full understanding of coding should become a part of it.</p>
+            <div class="testimonial-client">
+                <img src="https://img.etimg.com/thumb/width-420,height-315,imgsize-40518,resizemode-75,msid-97089587/news/new-updates/cristiano-ronaldos-luxury-treatment-in-saudi-arabia-draws-criticism-read-here/cristiano-ronaldo.jpg" alt="Client Photo">
+                <div class="testimonial-client-info">
+                    <h4>C. Ronaldo</h4>
+                    <span>The GOAT</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
+            <div class="testimonial-client">
+                <img src="https://via.placeholder.com/50" alt="Client Photo">
+                <div class="testimonial-client-info">
+                    <h4>A. Smith</h4>
+                    <span>Software Engineer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</center>
+<br>
+
+
+
+<div class="enroll-section">
+  <h1 >Intersted In Our Courses? Enroll Now!
+  </h1>
+ <h3 > Our courses are designed by senior developer with great experience.They on which part student will be confused , so they prepare courses in a way that no queries left.
+</h3>
+  <a href="Contact.html"><button class="btn bg-blue-900  mt-5 delay-50 hover:bg-blue-900 " > Applay Now!</button></a>
+</div>
+
+
+
+  <br>
+  <!-- Stats  -->
+  <section class="text-white body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-blue-500">Our Stats</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Coding Edge aims to create a supportive learning
+          environment for its users. Learners may have access to discussion forums, where they can interact with
+          instructors and fellow students, ask questions, and seek clarification on course materials.</p>
+      </div>
+      <div class="flex flex-wrap -m-4 text-center">
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="text-blue-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+              <path d="M8 17l4 4 4-4m-4-5v9"></path>
+              <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
+            </svg>
+            <h2 class="title-font font-medium text-3xl text-white">40k</h2>
+            <p class="leading-relaxed">Downloads</p>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="text-blue-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+            </svg>
+            <h2 class="title-font font-medium text-3xl text-white">1.2M</h2>
+            <p class="leading-relaxed">Users</p>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="text-blue-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+              <path d="M3 18v-6a9 9 0 0118 0v6"></path>
+              <path
+                d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z">
+              </path>
+            </svg>
+            <h2 class="title-font font-medium text-3xl text-white">4.3k</h2>
+            <p class="leading-relaxed">Files</p>
+          </div>
+        </div>
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="text-blue-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <h2 class="title-font font-medium text-3xl text-white">3.3k</h2>
+            <p class="leading-relaxed">Responses</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+  <script>
+    const carousel = document.querySelector=('.testimonial-carousel');
+    const testimonials = document.querySelectorAll('.testimonial-slide');
+    const totalTestimonials = testimonials.length / 2;  // Since we have duplicates
+    let index = 1;
+
+    function updateCarousel() {
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    carousel.addEventListener('transitionend', () => {
+        if (index === totalTestimonials + 1) {
+            index = 1;
+            carousel.style.transition = 'none';
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        } else if (index === 0) {
+            index = totalTestimonials;
+            carousel.style.transition = 'none';
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+    });
+
+    setInterval(() => {
+        if (index < totalTestimonials + 1) {
+            index++;
+            updateCarousel();
+        }
+    }, 5000);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class=" absolute flex text-center gap-x-20 gap-y-3">
+    <div class="ml-4"> Coding Edge | All Rights Resrved 2024 </div>
+    <a href="FAQs.html" class="hover:text-gray-400">FAQs</a>
+    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+    <a href="#" class="hover:text-gray-400">Terms And Conditions</a>
+
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // Login form handling
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const messageElement = document.getElementById('loginMessage');
+      
+      if (!email || !password) {
+        messageElement.innerHTML = '<div class="alert alert-danger">Please fill in all fields</div>';
+        return;
+      }
+
+      fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          messageElement.innerHTML = '<div class="alert alert-success">Login successful!</div>';
+          localStorage.setItem('user', JSON.stringify({ email: email }));
+          setTimeout(() => {
+            // Close the modal after successful login
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            loginModal.hide();
+          }, 1500);
+        } else {
+          messageElement.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        messageElement.innerHTML = '<div class="alert alert-danger">Login failed. Please try again.</div>';
+      });
+    });
+
+    // Signup form handling
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const messageElement = document.getElementById('signupMessage');
+      
+      if (!email || !password || !confirmPassword) {
+        messageElement.innerHTML = '<div class="alert alert-danger">Please fill in all fields</div>';
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        messageElement.innerHTML = '<div class="alert alert-danger">Passwords do not match</div>';
+        return;
+      }
+
+      fetch('http://localhost:3000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          messageElement.innerHTML = '<div class="alert alert-success">Account created successfully!</div>';
+          document.getElementById('signupForm').reset();
+          setTimeout(() => {
+            // Close the modal after successful signup
+            const signupModal = bootstrap.Modal.getInstance(document.getElementById('signupModal'));
+            signupModal.hide();
+          }, 1500);
+        } else {
+          messageElement.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        messageElement.innerHTML = '<div class="alert alert-danger">Signup failed. Please try again.</div>';
+      });
+    });
+  </script>
+</body>
+
+</html>

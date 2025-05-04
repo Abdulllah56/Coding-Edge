@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" rel="stylesheet">
+    <title>Services|Coding Edge</title>
+    <style>
+
+      body{
+        background-color: black;
+        color: white;
+      }
+       
+        h1 {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2pc;
+            text-shadow: 3px 2pc  rgb(1, 1, 69);
+            margin-top: 40px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .service-card {
+          
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            text-align: center;
+            border: 2px solid gray;
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .service-card-title {
+            padding: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .service-card-content {
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .service-card:hover .service-card-content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .service-card-content p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .service-card-content a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card-content a:hover {
+            background-color: #0056b3;
+        }
+
+        .service-title{
+            font-size: 5pc;
+            
+        }
+
+        .service-icon {
+            width: 77px;
+            height: 73px;
+            margin-bottom: 10px;
+            align-items: center;
+            justify-content: center;
+            margin-left: 84px;
+            margin-bottom: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark border-botom border-body" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">The Coding <span class="text-primary"> Edge</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link "  href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active "  href="Services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link "  href="Blog.html">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link"  href="Contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              More
+              </a>
+              <ul class="dropdown-menu">
+              
+                <li><a class="dropdown-item" href="WFU.html">Write For Us</a></li>
+                <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
+                
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="Support.html">Support Us</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
+        </div>
+        <div>
+        </div>
+      </div>
+    </nav>
+
+<center><h1 class="service-title">Our Services</h1></center>
+
+    <div class="section-title text-primary">Short-term Courses</div>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://camo.githubusercontent.com/3795e5487dfe7c70b09b3e40c9d7a170bbb61aaec2b8bc35a2b4d0b5af1205ca/68747470733a2f2f7777772e69696d2e66722f65636f6c652d7765622f77702d636f6e74656e742f75706c6f6164732f323031372f30312f48544d4c352e6a7067" alt="HTML" class="service-icon">
+               <span class="text-blue-800"> HTML & CSS</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Learn the basics of HTML and CSS to build your own websites from scratch.</p>
+                <a class="bg-primary" href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://play-lh.googleusercontent.com/EbdHNp8uMZcyzHqqf6IxkqYaUf0QjMzJyNOk33qEsrjf0_vVCPKq4QbOCjJx7jZ3LCs" alt="Wix" class="service-icon">
+               <span class="text-blue-800" >Wix</span> 
+            </div>
+            <div class="service-card-content">
+                <p class="text-white" >Create stunning websites without coding using Wix.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://static1.squarespace.com/static/5bacc8cd3560c3731f446ec1/5bb0ebae0d929713f2a383f0/5bc50a211bcb9c73d83a5592/1548169252467/Blogger-Logo-16x9.png?format=1500w" alt="Blogger" class="service-icon">
+               <span class="text-blue-800"> Blogger</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Create beautiful blogs with Blogger’s easy-to-use tools.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://play-lh.googleusercontent.com/3aWGqSf3T_p3F6wc8FFvcZcnjWlxpZdNaqFVEvPwQ1gTOPkVoZwq6cYvfK9eCkwCXbRY" alt="Canva" class="service-icon">
+               <span class="text-blue-800"> Canva</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Design beautiful graphics and visuals using Canva.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title text-primary">Long-term Courses</div>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://www.nexel.in/media/blog/banner/web_development_Z62jy4k.jpg" alt="Web Development" class="service-icon">
+              <span class="text-blue-800"> Web Development</span> 
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Dive into full-stack web development and build powerful web applications.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://www.zdnet.com/a/img/resize/e0a9cadd3b0038b854680cff5a197bdf96580443/2021/07/19/8a337c80-5ed6-43a1-98fb-b981d420890f/programming-languages-shutterstock-1680857539.jpg?auto=webp&width=1280" alt="Data Science" class="service-icon">
+               <span class="text-blue-800"> Programming languages</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Learn Programming Languages like JavaScript,Python,Java etc. Learn which one you like</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://img.freepik.com/free-vector/app-development-banner_33099-1720.jpg" alt="App Development" class="service-icon">
+              <span class="text-blue-800"> App Development</span> 
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Create mobile applications for Android and iOS using modern frameworks.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://www.gyansetu.in/wp-content/uploads/2024/02/FUqHEVVUsAAbZB0-1024x580-1.jpg" alt="Data Science" class="service-icon">
+               <span class="text-blue-800"> Data Science</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Learn data analysis, visualization, and machine learning techniques.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://media.licdn.com/dms/image/D5612AQHOaF1xcIonZA/article-cover_image-shrink_720_1280/0/1677672612275?e=2147483647&v=beta&t=YSGG24_hSYMcDmn7QyKR4LTUInhaXOrdYJc7N1lVmL4" alt="Game Development" class="service-icon">
+              <span class="text-blue-800">  Game Development</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Develop your own games using popular game development engines.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+
+     
+
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://www.atatus.com/glossary/content/images/2021/08/Database-Management-System.jpeg" alt="Database Management" class="service-icon">
+              <span class="text-blue-800"> Database Management</span> 
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Manage and organize data efficiently using various database systems.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title text-primary">Classes</div>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://vingsfire.com/wp-content/uploads/2017/06/online-learning.jpg" alt="Online Classes" class="service-icon">
+             <span class="text-blue-800">  Online Classes</span> 
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Attend our coding classes from the comfort of your home.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-card-title">
+                <img src="https://coursegate.co.uk/wp-content/uploads/2021/09/Empty-physical-classroom-768x346.jpg" alt="Physical Classes" class="service-icon">
+             <span class="text-blue-800">   Physical Classes</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Join our in-person classes for a hands-on learning experience.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title text-primary">Seminars</div>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-card-title">
+               <img src="https://media.licdn.com/dms/image/C5612AQHxqrh-KKV8zw/article-cover_image-shrink_720_1280/0/1633256980736?e=2147483647&v=beta&t=kyUx6cqp1mUQjvctWUbnVzm0Q99o97OhW5v-d-h03cg" alt="Seminars" class="service-icon">
+              <span class="text-blue-800">  Seminars</span>
+            </div>
+            <div class="service-card-content">
+                <p class="text-white">Participate in our seminars to learn from industry experts.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

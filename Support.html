@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" rel="stylesheet">
+    <title>Support Us - Coding Edge</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1E1E1E;
+            border-radius: 10px;
+        }
+        h1, h2 {
+            color: #00A1F1;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00A1F1;
+        }
+        .form-group input, .form-group select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+        .form-group input::placeholder {
+            color: #888;
+        }
+        .form-group select {
+            appearance: none;
+        }
+        .payment-methods {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .payment-methods label {
+            cursor: pointer;
+        }
+        .payment-methods input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: calc(100% - 22px);
+            padding: 10px;
+            background-color: #00A1F1;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+        .submit-btn:hover {
+            background-color: #16389d;
+        }
+        .card-icons img {
+            width: 50px;
+            margin-right: 10px;
+            display: none;
+        }
+        .card-icons img.active {
+            display: inline-block;
+        }
+
+        center{
+            font-weight: 700;
+            font-size: 39px;
+        margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-dark border-botom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">The Coding <span class="text-primary"> Edge</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link "  href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="About.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link "  href="Services.html">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link "  href="Blog.html">Blogs</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link "  href="Support.html">Support Us</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link"  href="Contact.html">Contact</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                More
+                </a>
+                <ul class="dropdown-menu">
+                
+                  <li><a class="dropdown-item" href="WFU.html">Write For Us</a></li>
+                  <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
+                  
+                 
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+          <div>
+          </div>
+        </div>
+      </nav>
+
+<div class="container">
+                      <center><h1>Support Us</h1></center>
+    <p>At Coding Edge, we strive to provide affordable and accessible coding education to everyone. Your support helps us create more free courses for underserved students. Thank you for your generosity!</p>
+  
+    <form action="#" method="POST">
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number" placeholder="Card Number" required>
+            <div class="card-icons">
+                <img src="https://logowik.com/content/uploads/images/visa-payment-card1873.jpg" id="visa-icon" alt="Visa">
+                <img src="https://w7.pngwing.com/pngs/397/885/png-transparent-logo-mastercard-product-font-mastercard-text-orange-logo.png" id="mastercard-icon" alt="MasterCard">
+                <img src="https://img.icons8.com/color/48/000000/amex.png" id="amex-icon" alt="American Express">
+                <img src="https://img.icons8.com/color/48/000000/discover.png" id="discover-icon" alt="Discover">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Continent</label>
+            <select id="country" name="country" required>
+                <option value="EU">Europe</option>
+                <option value="AS">Asia</option>
+                <option value="AF">Africa</option>
+                <option value="NA">North America</option>
+                <option value="SA">South America</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="zip-code">ZIP Code</label>
+            <input type="text" id="zip-code" name="zip-code" placeholder="ZIP Code" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Donation Amount</label>
+            <input type="number" id="amount" name="amount" placeholder="Donation Amount" required>
+        </div>
+        <div class="payment-methods">
+            <label>
+                <input type="radio" name="payment-method" value="card" checked> Card
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="paypal"> PayPal
+            </label>
+        </div>
+        <button type="submit" class="submit-btn bg-primarys" id="submit-btn">Donate Now</button>
+    </form>
+</div>
+
+
+<footer class=" absolute flex text-center gap-x-20 gap-y-3">
+    <div class="ml-4"> Coding Edge | All Rights Resrved 2024 </div>
+    <a href="FAQs.html" class="hover:text-gray-400">FAQs</a>
+    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+    <a href="#" class="hover:text-gray-400">Terms And Conditions</a>
+
+  </footer>
+  
+<script>
+
+let btn=document.getElementById("submit-btn")
+btn.addEventListener("click",()=>{
+    alert("Thankyou For YOur Donation")
+})
+
+    const cardNumberInput = document.getElementById('card-number');
+    const visaIcon = document.getElementById('visa-icon');
+    const masterCardIcon = document.getElementById('mastercard-icon');
+    const amexIcon = document.getElementById('amex-icon');
+    const discoverIcon = document.getElementById('discover-icon');
+
+    cardNumberInput.addEventListener('input', function () {
+        const cardNumber = cardNumberInput.value;
+        visaIcon.classList.remove('active');
+        masterCardIcon.classList.remove('active');
+        amexIcon.classList.remove('active');
+        discoverIcon.classList.remove('active');
+
+        if (/^4[0-9]{12}(?:[0-9]{3})?$/.test(cardNumber)) {
+            visaIcon.classList.add('active');
+        } else if (/^5[1-5][0-9]{14}$/.test(cardNumber)) {
+            masterCardIcon.classList.add('active');
+        } else if (/^3[47][0-9]{13}$/.test(cardNumber)) {
+            amexIcon.classList.add('active');
+        } else if (/^6(?:011|5[0-9]{2})[0-9]{12}$/.test(cardNumber)) {
+            discoverIcon.classList.add('active');
+        }
+    });
+</script>
+
+</body>
+</html>

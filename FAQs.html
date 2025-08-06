@@ -1,231 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css"
-      rel="stylesheet"
-    />
 
-    <link rel="stylesheet" href="index.css" />
-    <script src="script.js"></script>
-    <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <style>
-      body {
-          font-family: Arial, sans-serif;
-          background-color: black;
-          color: white;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs - Coding Edge</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+  <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
+  <style>
+    :root {
+      --primary-color: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --primary-light: #60a5fa;
+      --secondary-color: #1a1a1a;
+      --background-dark: #0a0a0a;
+      --text-light: rgba(255, 255, 255, 0.9);
+      --text-muted: rgba(255, 255, 255, 0.6);
+      --border-color: rgba(59, 130, 246, 0.3);
+      --success-color: #10b981;
+      --error-color: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--background-dark) 0%, var(--secondary-color) 50%, var(--background-dark) 100%);
+      color: var(--text-light);
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+      padding: 80px 0 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FAQ Container */
+    .faq-container {
+      max-width: 900px;
+      margin: -40px auto 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .faq-section {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      padding: 3rem;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .faq-section:hover::before {
+      opacity: 1;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item:hover {
+      background: rgba(59, 130, 246, 0.05);
+      border-bottom-color: transparent;
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+      padding: 0 1.5rem;
+      background: rgba(59, 130, 246, 0.02);
+    }
+
+    .faq-answer p {
+      margin: 0;
+      padding: 1.5rem 0;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0 1.5rem;
+    }
+
+    .plus-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .plus-icon {
+      transform: rotate(45deg);
+      background: linear-gradient(135deg, var(--success-color), #059669);
+    }
+
+    /* Support Section */
+    .support-section {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      padding: 3rem;
+      backdrop-filter: blur(20px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .support-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .support-section:hover::before {
+      opacity: 1;
+    }
+
+    .support-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .support-section h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .support-section p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .support-btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .support-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+      color: white;
+      text-decoration: none;
+    }
+
+    .support-btn:active {
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 6rem;
+      background: linear-gradient(135deg, var(--background-dark) 0%, var(--secondary-color) 100%);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0 1rem 0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 60px 0 40px 0;
+      }
+
       .faq-container {
-          max-width: 800px;
-          margin: 0 auto;
+        padding: 0 1rem;
+        margin-top: -20px;
       }
 
-      .FAQs{
-        padding: 20px;
+      .faq-section,
+      .support-section {
+        padding: 2rem;
       }
-      .faq-header {
-          font-size: 24px;
-          margin-bottom: 20px;
-      }
-      .faq-item {
-          border-bottom: 1px solid #ccc;
-          margin-bottom: 10px;
-          cursor: pointer;
-      }
+
       .faq-question {
-          padding: 15px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+        padding: 1rem;
+        font-size: 1rem;
       }
+
       .faq-answer {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease-out;
-          padding: 0 15px;
+        padding: 0 1rem;
       }
-      .faq-answer p {
-          margin: 10px 0;
-      }
+
       .faq-item.open .faq-answer {
-          max-height: 100px; /* Adjust this value as needed */
+        padding: 0 1rem;
       }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .faq-section,
+      .support-section {
+        padding: 1.5rem;
+      }
+
+      .faq-question {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+      }
+
       .plus-icon {
-          font-size: 24px;
-          transition: transform 0.3s ease-out;
-      }
-      .faq-item.open .plus-icon {
-          transform: rotate(45deg);
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
       }
 
-      .ticket-container{
-height: 14pc;
-width: 14pc;
-border: 2px solid gray;
-border-radius: 9px;
-margin-top:3pc ;
-margin-bottom: 2pc;
+      .support-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
       }
+
+      .support-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
   </style>
-    <title>FAQs</title>
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-expand-lg bg-dark border-botom border-body" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#=index.html">The Coding <span class="text-primary"> Edge</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link"  href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  href="About.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Services.html">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active"aria-current="page" href="FAQs.html">FAQs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Contact.html">Contact</a>
-            </li>
-           
+</head>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">The Coding <span class="text-primary">Edge</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="About.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="courses.html">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Blog.html">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Support.html">Support Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="FAQs.html">FAQs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="Blog.html">Blogs</a></li>
-                <li><a class="dropdown-item" href="WFU.html">Write For Us</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="Support.html">Support Us</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-          </form>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Support.html">Support Us</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about our courses, platform, and services.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Container -->
+  <div class="faq-container">
+    <div class="faq-section">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What courses do you offer?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We offer a comprehensive range of coding courses including HTML, CSS, JavaScript, Python, C++, Java, React, Node.js, and many more. Our curriculum covers everything from beginner-friendly introductions to advanced professional development topics.</p>
         </div>
       </div>
-    </nav>
 
-<h1 class="FAQs" ><center> Frequently Asked Questions</center></h1>
-    <main>
-      
-      <div class="faq-container">
-    
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>What courses do you offer?</span>
-                <span class="plus-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>We offer a wide range of coding courses including HTML, CSS, JavaScript, Python, C++, Java, and many more.</p>
-            </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How can I enroll in a course?</span>
+          <span class="plus-icon">+</span>
         </div>
-    
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>How can I enroll in a course?</span>
-                <span class="plus-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>You can enroll in any course by signing up on our website and selecting the course you wish to take. Follow the instructions to complete your enrollment.</p>
-            </div>
+        <div class="faq-answer">
+          <p>Enrollment is simple! Create an account on our website, browse our course catalog, and select the course you're interested in. Follow the enrollment process, complete payment if required, and you'll have immediate access to course materials.</p>
         </div>
-    
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Are the courses self-paced?</span>
-                <span class="plus-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Yes, all our courses are designed to be self-paced, allowing you to learn at your own convenience.</p>
-            </div>
-        </div>
-    
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Do you offer any certifications?</span>
-                <span class="plus-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Yes, upon successful completion of a course, you will receive a certificate of completion.</p>
-            </div>
-        </div>
-    
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>What is the refund policy?</span>
-                <span class="plus-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>We offer a 30-day money-back guarantee. If you are not satisfied with the course, you can request a refund within 30 days of purchase.</p>
-            </div>
-        </div>
-    
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>How can I get support if I face any issues?</span>
-                <span class="plus-icon">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>You can reach out to our support team via email or live chat for any assistance you need.</p>
-            </div>
-        </div>
+      </div>
 
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are the courses self-paced?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, all our courses are designed to be self-paced, allowing you to learn at your own convenience and schedule. You can access course materials 24/7 and progress through lessons at a speed that works best for you.</p>
+        </div>
+      </div>
 
-        <div class="faq-item">
-          <div class="faq-question">
-              <span>Do Coding Edge provide live classes and seminars?</span>
-              <span class="plus-icon">+</span>
-          </div>
-          <div class="faq-answer">
-              <p>Of course! We have live sessions and seminars as well as online classes</p>
-          </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do you offer any certifications?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, upon successful completion of a course, you will receive a certificate of completion that you can add to your professional portfolio, LinkedIn profile, or resume. Our certificates are recognized by industry professionals.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What is the refund policy?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We offer a 30-day money-back guarantee for all paid courses. If you are not satisfied with the course content or experience, you can request a full refund within 30 days of purchase, no questions asked.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How can I get support if I face any issues?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Our support team is available 24/7 to help you. You can reach out via email, live chat, or submit a support ticket through our contact page. We also have an active community forum where you can get help from fellow learners.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do you provide live classes and seminars?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely! In addition to our self-paced courses, we offer live interactive sessions, webinars, and seminars. These sessions provide opportunities for real-time Q&A, networking with peers, and learning from industry experts.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can I access courses on mobile devices?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, our platform is fully responsive and optimized for mobile devices. You can access all course materials, watch videos, and complete assignments on your smartphone or tablet, making learning possible anywhere, anytime.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are there any prerequisites for the courses?</span>
+          <span class="plus-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Prerequisites vary by course. Beginner courses require no prior experience, while advanced courses may require foundational knowledge. Each course page clearly lists any prerequisites, recommended background, and skill level requirements.</p>
+        </div>
       </div>
     </div>
 
-  <center> <div class="ticket-container">
-     <p class="pt-10 pl-3 pr-3">Didnt get your answer? No problem . Our support team is always there to help you</p> 
-     <a href="Contact.html"> <button class="btn btn-outline-primary w-95">Sumbit a Ticket</button></a>
+    <!-- Support Section -->
+    <div class="support-section">
+      <div class="support-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h3>Still Have Questions?</h3>
+      <p>Didn't find what you were looking for? Our support team is always ready to help you with any questions or concerns you might have.</p>
+      <a href="Contact.html" class="support-btn">
+        <i class="fas fa-ticket-alt"></i>
+        Contact Support
+      </a>
     </div>
-  </center> 
+  </div>
 
-    <footer class=" absolute flex text-center gap-x-20 gap-y-3">
-      <div class="ml-4"> <a class="no-underline text-white" href="index.html "> Coding Edge </a> | All Rights Resrved 2024 </div>
-       <a href="FAQs.html" class="hover:text-gray-400 no-underline text-white">FAQs</a>
-       <a href="#" class="hover:text-gray-400 no-underline text-white" >Privacy Policy</a>
-       <a href="#" class="hover:text-gray-400 no-underline text-white" >Terms And Conditions</a>
-     
-       </footer>
-    
-    <script>
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.addEventListener('click', () => {
-                item.classList.toggle('open');
-            });
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>Coding Edge | All Rights Reserved 2024</div>
+      <div class="footer-links">
+        <a href="FAQs.html">FAQs</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms And Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        // Close other open items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('open');
+          }
         });
-    </script>
-    
-      
+        
+        // Toggle current item
+        item.classList.toggle('open');
+      });
+    });
 
-    </main>
-  </body>
+    // Add entrance animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.faq-section, .support-section').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

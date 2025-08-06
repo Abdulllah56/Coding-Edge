@@ -8,65 +8,254 @@
   <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="why-section-styles.css">
+  <link rel="stylesheet" href="blog-styles.css">
   <link rel="stylesheet" href="index.css">
   <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" rel="stylesheet" />
   <script src="script.js"></script>
   <style>
     body {
-        font-family: 'Arial', sans-serif;
-        
-       
+      font-family: 'Arial', sans-serif;
+
+
     }
+
+    /* Testimonial Section Styles */
+    .testimonial-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.1;
+    }
+
     .testimonial-carousel-container {
-        width: 80%;
-        padding-top: 2.5pc;
-        justify-content: center;
-        align-items: center;
-        max-width: 800px;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        position: relative;
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: rgba(30, 41, 59, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(59, 130, 246, 0.1);
     }
+
+    .testimonial-carousel-wrapper {
+      overflow: hidden;
+      border-radius: 15px;
+      position: relative;
+      height: 400px;
+    }
+
     .testimonial-carousel {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
+
     .testimonial-slide {
-        min-width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 40px 30px;
+      text-align: center;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+
+    .testimonial-slide.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .testimonial-slide.prev {
+      transform: translateX(-100%);
+    }
+
+    .testimonial-slide.next {
+      transform: translateX(100%);
+    }
+
+    .testimonial-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .quote-icon {
+      font-size: 4rem;
+      color: #3b82f6;
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 20px;
+      font-family: serif;
+    }
+
     .testimonial-slide p {
-        font-size: 18px;
-        color: rgb(255, 252, 252);
-        margin-bottom: 20px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+      margin-bottom: 30px;
+      font-style: italic;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
     .testimonial-client {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
     }
+
     .testimonial-client img {
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #3b82f6;
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+      transition: transform 0.3s ease;
     }
+
+    .testimonial-client img:hover {
+      transform: scale(1.05);
+    }
+
     .testimonial-client-info {
-        text-align: left;
+      text-align: left;
     }
+
     .testimonial-client-info h4 {
-        margin: 0;
-        font-size: 16px;
-        color: rgb(36, 94, 251);
+      margin: 0 0 5px 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #3b82f6;
     }
+
     .testimonial-client-info span {
-        font-size: 14px;
-        color: #777;
+      font-size: 1rem;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 8px;
     }
-</style>
+
+    .rating {
+      color: #fbbf24;
+      font-size: 1.1rem;
+    }
+
+    /* Navigation Buttons */
+    .testimonial-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(59, 130, 246, 0.9);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .testimonial-nav:hover {
+      background: #3b82f6;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    }
+
+    .testimonial-nav.prev {
+      left: -25px;
+    }
+
+    .testimonial-nav.next {
+      right: -25px;
+    }
+
+    /* Dots Indicator */
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: #3b82f6;
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    }
+
+    .dot:hover {
+      background: rgba(59, 130, 246, 0.7);
+      transform: scale(1.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .testimonial-carousel-container {
+        margin: 0 20px;
+        padding: 30px 20px;
+      }
+
+      .testimonial-slide p {
+        font-size: 1.1rem;
+      }
+
+      .testimonial-client {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .testimonial-client-info {
+        text-align: center;
+      }
+
+      .testimonial-nav {
+        width: 40px;
+        height: 40px;
+      }
+
+      .testimonial-nav.prev {
+        left: -20px;
+      }
+
+      .testimonial-nav.next {
+        right: -20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -87,7 +276,7 @@
             <a class="nav-link" href="About.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Services.html">Services</a>
+            <a class="nav-link" href="courses.html">Courses</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Contact.html">Contact</a>
@@ -99,9 +288,6 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="Blog.html">Blogs</a></li>
-              <li>
-                <a class="dropdown-item" href="WFU.html">Write For Us</a>
-              </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -148,14 +334,15 @@
           <form id="loginForm">
             <div class="mb-3">
               <label for="loginEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" />
+              <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                placeholder="Enter Your Email" />
               <div id="emailHelp" class="form-text">
                 We'll never share your email with anyone else.
               </div>
             </div>
             <div class="mb-3">
               <label for="loginPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="loginPassword" />
+              <input type="password" class="form-control" id="loginPassword" placeholder="Enter Your Password" />
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="loginRemember" />
@@ -188,19 +375,20 @@
           <form id="signupForm">
             <div class="mb-3">
               <label for="signupEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" />
+              <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
+                placeholder="Enter Your Email" />
               <div id="emailHelp" class="form-text">
                 We'll never share your email with anyone else.
               </div>
             </div>
             <div class="mb-3">
               <label for="signupPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="signupPassword" />
+              <input type="password" class="form-control" id="signupPassword" placeholder="Enter Your Password" />
             </div>
             <div class="mb-3">
               <label for="confirmPassword" class="form-label">
                 Confirm Password</label>
-              <input type="password" class="form-control" id="confirmPassword" />
+              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Your Password" />
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="signupRemember" />
@@ -220,251 +408,521 @@
       </div>
     </div>
   </div>
-  <!-- Carousel -->
-  <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel"
-    data-bs-interval="5000">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
+  <!-- Enhanced Hero Section -->
+  <section class="hero-section">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+      <!-- Custom Indicators -->
+      <div class="carousel-indicators custom-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="hero-background">
+            <img
+              src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="hero-image" alt="Coding workspace" />
+            <div class="hero-overlay"></div>
+          </div>
+
+          <div class="hero-content">
+            <div class="container">
+              <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 col-md-10 mx-auto text-center">
+                  <div class="hero-text-wrapper">
+                    <div class="hero-badge">
+                      <span class="badge-text">🚀 Start Your Journey</span>
+                    </div>
+                    <h1 class="hero-title animate-fade-up">
+                      Welcome To <span class="text-gradient">The Coding Edge</span>
+                    </h1>
+                    <p class="hero-subtitle animate-fade-up-delay">
+                      Unleash Your Coding Potential with Expert-Led Courses and Real-World Projects
+                    </p>
+                    <div class="hero-stats">
+                      <div class="stat-item">
+                        <span class="stat-number">40K+</span>
+                        <span class="stat-label">Students</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-number">140+</span>
+                        <span class="stat-label">Instructors</span>
+                      </div>
+                    </div>
+                    <div class="hero-buttons">
+                      <a href="About.html" class="btn-primary-custom">
+                        <span>Learn More</span>
+                        <i class="arrow-icon">→</i>
+                      </a>
+                      <a href="courses.html" class="btn-secondary-custom">
+                        <span>Explore Courses</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="hero-background">
+            <img
+              src="https://images.unsplash.com/photo-1555066931-bf19f8fd1085?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="hero-image" alt="Programming code" />
+            <div class="hero-overlay"></div>
+          </div>
+
+          <div class="hero-content">
+            <div class="container">
+              <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 col-md-10 mx-auto text-center">
+                  <div class="hero-text-wrapper">
+                    <div class="hero-badge">
+                      <span class="badge-text">💻 Master Programming</span>
+                    </div>
+                    <h1 class="hero-title animate-fade-up">
+                      Achieve <span class="text-gradient">Coding Mastery</span>
+                    </h1>
+                    <p class="hero-subtitle animate-fade-up-delay">
+                      Empowering coders to shape the digital landscape of tomorrow with cutting-edge skills
+                    </p>
+                    <div class="hero-features">
+                      <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <span>Hands-on Projects</span>
+                      </div>
+                      <div class="feature-item">
+                        <div class="feature-icon">👥</div>
+                        <span>Expert Mentors</span>
+                      </div>
+                      <div class="feature-item">
+                        <div class="feature-icon">🏆</div>
+                        <span>Industry Recognition</span>
+                      </div>
+                    </div>
+                    <div class="hero-buttons">
+                      <a href="Services.html" class="btn-primary-custom">
+                        <span>Start Learning</span>
+                        <i class="arrow-icon">→</i>
+                      </a>
+                      <a href="About.html" class="btn-secondary-custom">
+                        <span>Learn More</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="hero-background">
+            <img
+              src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="hero-image" alt="Developer workspace" />
+            <div class="hero-overlay"></div>
+          </div>
+
+          <div class="hero-content">
+            <div class="container">
+              <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 col-md-10 mx-auto text-center">
+                  <div class="hero-text-wrapper">
+                    <div class="hero-badge">
+                      <span class="badge-text">⚡ Level Up</span>
+                    </div>
+                    <h1 class="hero-title animate-fade-up">
+                      <span class="text-gradient">Elevate Your Skills</span>
+                    </h1>
+                    <p class="hero-subtitle animate-fade-up-delay">
+                      Where passion for coding fuels groundbreaking digital transformations and career growth
+                    </p>
+                    <div class="hero-technologies">
+                      <div class="tech-item">JavaScript</div>
+                      <div class="tech-item">Python</div>
+                      <div class="tech-item">React</div>
+                      <div class="tech-item">Node.js</div>
+                      <div class="tech-item">AI/ML</div>
+                    </div>
+                    <div class="hero-buttons">
+                      <a href="Services.html" class="btn-primary-custom">
+                        <span>Join Now</span>
+                        <i class="arrow-icon">→</i>
+                      </a>
+                      <a href="Contact.html" class="btn-secondary-custom">
+                        <span>Contact Us</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Navigation -->
+      <button class="carousel-control-prev custom-nav-btn" type="button" data-bs-target="#heroCarousel"
+        data-bs-slide="prev">
+        <span class="custom-prev-icon" aria-hidden="true">‹</span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next custom-nav-btn" type="button" data-bs-target="#heroCarousel"
+        data-bs-slide="next">
+        <span class="custom-next-icon" aria-hidden="true">›</span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
 
-        <img
-          src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="d-block w-100 h-400px" alt="..." />
-
-        <div class="carousel-caption d-none d-md-block">
-          <b>
-            <h1 class="heading">Welcome To the Coding Edge</h1>
-          </b>
-          <h3 class="sub-heading">Unleash Your Coding Potential with The Coding Edge</h3>
-          <a href="Services.html"> <button class="start-button">GET STRARTED</button></a>
-        </div>
-
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100"
-          src="https://images.unsplash.com/photo-1555066931-bf19f8fd1085?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="" />
-        <div class="carousel-caption d-none d-md-block">
-          <b>
-            <h1 class=" heading">Coding Mastery</h1>
-          </b>
-          <h3 class="sub-heading">Empowering coders to shape the digital landscape of tomorrow.</h3>
-          <a href="Services.html"> <button class="start-button">GET STRARTED</button></a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-          src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <b>
-            <h1 class=" heading">Elevate Your Skills</h1>
-          </b>
-          <h3 class="sub-heading">
-            "Where passion for coding fuels groundbreaking digital
-            transformations."
-          </h3>
-          <a href="Services.html"> <button class="start-button">GET STRARTED</button></a>
-        </div>
-      </div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-text">Scroll to explore</div>
+      <div class="scroll-arrow">↓</div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+  </section>
 
   <!-- Courses -->
- 
+
   <h1 class="course-heading text-blue-500 font-medium">Most Popular Courses</h1>
 
   <div class="courses-container">
-      <div class="course-card">
-          <img class="course-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript Logo">
-          <div class="course-description">
-              <h3>JavaScript is the most popular and powerful programming language in this Era. So what are you waiting for? Enroll Now!</h3>
-          </div>
-          <button class="btn bg-blue-900 hover:bg-blue-800  course-btn">Learn More</button>
+    <div class="course-card">
+      <img class="course-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"
+        alt="JavaScript Logo">
+      <div class="course-description">
+        <h3>JavaScript is the most popular and powerful programming language in this Era. So what are you waiting for?
+          Enroll Now!</h3>
       </div>
+      <button class="btn bg-blue-900 hover:bg-blue-800  course-btn">Learn More</button>
+    </div>
 
-      <div class="course-card">
-          <img class="course-img" src="https://i0.wp.com/junilearning.com/wp-content/uploads/2020/06/python-programming-language.webp?fit=800%2C800&ssl=1" alt="Python Logo">
-          <div class="course-description">
-              <h3>Python is one of the most used programming languages. It is known for its simple syntax. It is easy to learn because of its simplicity.</h3>
-          </div>
-          <button class="btn bg-blue-900 hover:bg-blue-800 course-btn ">Learn More</button>
+    <div class="course-card">
+      <img class="course-img"
+        src="https://i0.wp.com/junilearning.com/wp-content/uploads/2020/06/python-programming-language.webp?fit=800%2C800&ssl=1"
+        alt="Python Logo">
+      <div class="course-description">
+        <h3>Python is one of the most used programming languages. It is known for its simple syntax. It is easy to learn
+          because of its simplicity.</h3>
       </div>
+      <button class="btn bg-blue-900 hover:bg-blue-800 course-btn ">Learn More</button>
+    </div>
   </div>
 
 
-  <!-- Why we stand Out -->
-  <section class="text-white body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="text-center mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font text-blue-500 mb-4">
+  <!-- Why we stand Out -- -->
+  <!-- Why We Stand Out -->
+  <section class="why-stand-out-section">
+    <div class="container mx-auto px-5 py-24">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-500 mb-6">
           Why We Stand Out
         </h1>
-
-        <div class="flex mt-6 justify-center">
-          <div class="w-16 h-1 rounded-full bg-blue-600 inline-flex"></div>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+          Discover what makes The Coding Edge the premier destination for aspiring developers and coding enthusiasts
+        </p>
+        <div class="flex justify-center">
+          <div class="w-24 h-1 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"></div>
         </div>
       </div>
-      <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
-          <div
-            class="w-25 h-38 inline-flex items-center justify-center rounded-full bg--100 text-indigo-500 mb-5 flex-shrink-0">
 
-            <img class="w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100  flex-shrink-0"
-              src="https://miro.medium.com/v2/resize:fit:1400/1*YZ2fsT9k1CmlMil-Fda0Zg.png" alt="">
-
-
-          </div>
-          <div class="flex-grow">
-            <h2 class="text-blue-800 text-lg title-font font-medium mb-3">
-              Expert Programming Guidance
-            </h2>
-            <p class="leading-relaxed text-base">
-              Get access to a team of experienced programmers who provide
-              comprehensive guidance and support to help you excel in coding
-              and programming.
-            </p>
-            <a class="mt-3 text-blue-800 inline-flex items-center cursor-pointer hover:text-blue-600">Learn More
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                <img class="" w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100
-                  flex-shrink-0" " src="" alt="">
-                  <path d=" M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
-          <div
-            class="w-25 h-38 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-
-            <circle cx="6" cy="6" r="3"></circle>
-            <circle cx="6" cy="18" r="3"></circle>
-
-            <img class="w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100  flex-shrink-0"
-              src="" alt="">
-
-
-          </div>
-          <div class="flex-grow">
-            <h2 class="text-blue-800 text-lg title-font font-medium mb-3">
-              Wide Range of Resources
-            </h2>
-            <p class="leading-relaxed text-base">
-              Explore a vast library of tips, techniques, and queries that
-              cover various programming languages and frameworks, ensuring you
-              have the resources you need to tackle any coding challenge.
-            </p>
-            <a class="mt-3 text-blue-800 inline-flex items-center cursor-pointer hover:text-blue-600">Learn More
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <!-- Card 1: Expert Programming Guidance -->
+        <div class="feature-card group">
+          <div class="feature-card-inner">
+            <div class="feature-icon-wrapper">
+              <img src="https://jessup.edu/wp-content/uploads/2023/12/Programming-in-Computer-Science.jpg"
+                alt="Expert Programming Guidance" class="feature-image">
+              <div class="feature-icon-overlay">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Expert Programming Guidance</h3>
+              <p class="feature-description">
+                Get access to a team of experienced programmers who provide comprehensive guidance and support to help
+                you excel in coding and programming with personalized mentorship.
+              </p>
+              <div class="feature-highlights">
+                <span class="highlight-item">• 1-on-1 Mentoring</span>
+                <span class="highlight-item">• Code Reviews</span>
+                <span class="highlight-item">• Career Guidance</span>
+              </div>
+              <a href="Services.html" class="feature-link">
+                Learn More
+                <svg class="link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
-          <div
-            class="w-25 h-38 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              class="w-10 h-10" viewBox="0 0 24 24">
-              <img class="w-60 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100  flex-shrink-0"
-                src="https://www.seoclerk.com/pics/599828-1k4Ve71524487216.png" alt="">
 
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
+        <!-- Card 2: Comprehensive Learning Resources -->
+        <div class="feature-card group">
+          <div class="feature-card-inner">
+            <div class="feature-icon-wrapper">
+              <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1000&auto=format&fit=crop"
+                alt="Comprehensive Learning Resources" class="feature-image">
+              <div class="feature-icon-overlay">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Comprehensive Learning Resources</h3>
+              <p class="feature-description">
+                Explore our vast library of tutorials, documentation, coding challenges, and real-world projects
+                covering various programming languages and modern frameworks.
+              </p>
+              <div class="feature-highlights">
+                <span class="highlight-item">• 500+ Tutorials</span>
+                <span class="highlight-item">• Practice Projects</span>
+                <span class="highlight-item">• Code Libraries</span>
+              </div>
+              <a href="Services.html" class="feature-link">
+                Explore Resources
+                <svg class="link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Interactive Coding Environment -->
+        <div class="feature-card group">
+          <div class="feature-card-inner">
+            <div class="feature-icon-wrapper">
+              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1000&auto=format&fit=crop"
+                alt="Interactive Coding Environment" class="feature-image">
+              <div class="feature-icon-overlay">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Interactive Coding Environment</h3>
+              <p class="feature-description">
+                Practice coding in our state-of-the-art online IDE with real-time collaboration, debugging tools, and
+                instant feedback to accelerate your learning journey.
+              </p>
+              <div class="feature-highlights">
+                <span class="highlight-item">• Live Code Editor</span>
+                <span class="highlight-item">• Real-time Collaboration</span>
+                <span class="highlight-item">• Instant Feedback</span>
+              </div>
+              <a href="Services.html" class="feature-link">
+                Try Now
+                <svg class="link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Industry-Ready Certification -->
+        <div class="feature-card group">
+          <div class="feature-card-inner">
+            <div class="feature-icon-wrapper">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D5622AQH6AQ7XddixwA/feedshare-shrink_800/feedshare-shrink_800/0/1700249640814?e=2147483647&v=beta&t=xMVQbYavFPof2rP0Aikr3jCapcTHSCCdDgrmFtBF2cg"
+                alt="Industry-Ready Certification" class="feature-image">
+              <div class="feature-icon-overlay">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Industry-Ready Certification</h3>
+              <p class="feature-description">
+                Earn recognized certifications that validate your skills and boost your career prospects with our
+                industry-aligned curriculum and assessment programs.
+              </p>
+              <div class="feature-highlights">
+                <span class="highlight-item">• Verified Certificates</span>
+                <span class="highlight-item">• Industry Recognition</span>
+                <span class="highlight-item">• Career Support</span>
+              </div>
+              <a href="Services.html" class="feature-link">
+                Get Certified
+                <svg class="link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <a href="Contact.html">
+          <button class="cta-button">
+            <span>Get Started Today</span>
+            <svg class="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
-          </div>
-          <div class="flex-grow">
-            <h2 class="text-blue-800 text-lg title-font font-medium mb-3">
-              Interactive Coding Courses
-            </h2>
-            <p class="leading-relaxed text-base">
-              Enroll in interactive coding courses designed to enhance your
-              skills and knowledge. Learn at your own pace and receive
-              personalized feedback to accelerate your growth as a programmer.
-            </p>
-            <a class="mt-3 text-blue-800 inline-flex items-center   cursor-pointer hover:text-blue-600">Learn More
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-
-        </div>
+          </button>
+        </a>
       </div>
-      <a href="Contact.html"><button
-          class="flex mx-auto mt-16 text-white bg-blue-900 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800 rounded text-lg delay-200">
-          Contact Us
-        </button></a>
     </div>
   </section>
   <br>
 
-<!-- Blogs -->
+  <!-- Blogs -->
 
-<h1 class="sm:text-3xl text-2xl font-medium title-font text-primary mb-4">Read Our Blogs</h1>
+  <section class="blog-section py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="blog-section-title">Read Our Latest Blogs</h1>
+        <p class="blog-section-subtitle">Stay updated with the latest trends, tutorials, and insights in the world of
+          programming</p>
+        <div class="title-underline"></div>
+      </div>
 
-<div class="row mb-2">
-  <div class="col-md-6 transition-transform duration-500 transform hover:-translate-y-2">
-    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-      <div class="col p-4 d-flex flex-column position-static">
-        <strong class="d-inline-block mb-2 text-primary-emphasis">Understanding</strong>
-        <h3 class="mb-0">Diference between coding and programming</h3>
-        <div class="mb-1 text-gray-600">Aug 12</div>
-        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-        <a href="https://abdullahs-newsletter-b9cf07.beehiiv.com/p/difference-coding-programming" class="icon-link gap-1 icon-link-hover stretched-link hover:text-gray-400" target="_blank">
-          Continue reading
-          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+      <div class="row g-4 justify-content-center">
+        <!-- Blog Card 1 -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="blog-card h-100">
+            <div class="blog-card-inner">
+              <div class="blog-image-wrapper">
+                <img
+                  src="https://d14b9ctw0m6fid.cloudfront.net/ugblog/wp-content/uploads/2020/09/main-qimg-d44da3cb5f13b1b40769886e5232114c.jpg"
+                  alt="Coding vs Programming" class="blog-image">
+                <div class="blog-category-badge">Understanding</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date">
+                    <svg class="blog-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    Aug 12, 2024
+                  </span>
+                  <span class="blog-read-time">
+                    <svg class="blog-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    5 min read
+                  </span>
+                </div>
+                <h3 class="blog-title">Difference between Coding and Programming</h3>
+                <p class="blog-excerpt">Discover the key distinctions between coding and programming, and understand how
+                  these fundamental concepts shape the world of software development.</p>
+                <div class="blog-tags">
+                  <span class="blog-tag">Programming</span>
+                  <span class="blog-tag">Beginner</span>
+                </div>
+                <a href="https://abdullahs-newsletter-b9cf07.beehiiv.com/p/difference-coding-programming"
+                  class="blog-read-more" target="_blank">
+                  Read Full Article
+                  <svg class="blog-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                    </path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="blog-card h-100">
+            <div class="blog-card-inner">
+              <div class="blog-image-wrapper">
+                <img
+                  src="https://www.21twelveinteractive.com/wp-content/uploads/2023/09/Top-Web-App-Development-Language-in-2024-1-1.png"
+                  alt="Top Programming Languages" class="blog-image">
+                <div class="blog-category-badge">Competition</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date">
+                    <svg class="blog-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    Aug 11, 2024
+                  </span>
+                  <span class="blog-read-time">
+                    <svg class="blog-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    8 min read
+                  </span>
+                </div>
+                <h3 class="blog-title">Top Five Programming Languages</h3>
+                <p class="blog-excerpt">Explore the most popular and in-demand programming languages that are shaping
+                  the future of technology and career opportunities in 2024.</p>
+                <div class="blog-tags">
+                  <span class="blog-tag">Languages</span>
+                  <span class="blog-tag">Career</span>
+                </div>
+                <a href="https://abdullahs-newsletter-b9cf07.beehiiv.com/p/top-five-programming-languages"
+                  class="blog-read-more" target="_blank">
+                  Read Full Article
+                  <svg class="blog-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                    </path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-5">
+        <a href="Blog.html">
+          <button class="blog-cta-button">
+            <span>Explore All Blogs</span>
+            <svg class="blog-cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
         </a>
       </div>
-      <div class="col-auto d-none d-lg-block">
-    
-        <img class="bd-placeholder-img role="img" aria-label="Placeholder: Thumbnail h-35 w-35"  src="https://d14b9ctw0m6fid.cloudfront.net/ugblog/wp-content/uploads/2020/09/main-qimg-d44da3cb5f13b1b40769886e5232114c.jpg" alt="Coding and programming Diference"  >
-      </div>
     </div>
-  </div>
-
-  <div class="col-md-6 transition-transform duration-500 transform hover:-translate-y-2">
-    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-      <div class="col p-4 d-flex flex-column position-static">
-        <strong class="d-inline-block mb-2 text-primary-emphasis">Competition</strong>
-        <h3 class="mb-0">Top five programming languages</h3>
-        <div class="mb-1 text-body-secondary">Aug 11</div>
-        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-        <a href="https://abdullahs-newsletter-b9cf07.beehiiv.com/p/top-five-programming-languages" class="icon-link gap-1 icon-link-hover stretched-link hover:text-gray-400" target="_blank">
-          Continue reading
-          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-        </a>
-      </div>
-      <div class="col-auto d-none d-lg-block">
-        <img class="bd-placeholder-img role="img" aria-label="Placeholder: Thumbnail h-35 w-35"  src="https://www.21twelveinteractive.com/wp-content/uploads/2023/09/Top-Web-App-Development-Language-in-2024-1-1.png" alt="Programming languages">
-      </div>
-    </div>
-  </div>
-</div>
-<a href="Blog.html"><button
-  class="flex mx-auto mt-16 text-white bg-blue-900 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800 rounded text-lg delay-200">
-  Read More
-</button></a>
-
+  </section>
 
 
 
@@ -476,118 +934,189 @@
   <h1 class="logo-carousel-title text-primary ">Trusted by the world's most innovative teams</h1>
   <div class="logo-carousel-container">
     <div class="logo-carousel-track">
-      <div class="logo-carousel-item"><img src="https://sandaacademy.com/wp-content/uploads/2023/02/Java-Logo.png" alt="Java"></div>
+      <div class="logo-carousel-item"><img src="Images/replit.png"
+          alt="Replit"></div>
 
-      <div class="logo-carousel-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript"></div>
+      <div class="logo-carousel-item"><img src="https://cdn.prod.website-files.com/638ec3d4fcf5e083b0519cf8/65845505ac08fff6b48fd1c9_Canva_icon_2021.svg"
+          alt="Canva"></div>
 
-      <div class="logo-carousel-item"><img src="https://github.blog/wp-content/uploads/2024/07/github-logo.png" alt="GitHub"></div>
+      <div class="logo-carousel-item"><img src="Images/github-logo-removebg-preview.png" alt="GitHub"></div>
 
-      <div class="logo-carousel-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png" alt="Node.js"></div>
+      <div class="logo-carousel-item"><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png"
+          alt="Node.js"></div>
 
-      <div class="logo-carousel-item"><img src="https://media.licdn.com/dms/image/C4E12AQEBVCR2SpRr9g/article-cover_image-shrink_720_1280/0/1625909824541?e=2147483647&v=beta&t=Y_zSoI8cPUR3wQvPyYK15PLWpQJJ0si6OvsuXFnIC18" alt="ReactJS"></div>
+      <div class="logo-carousel-item"><img src="Images/React js.png" alt="ReactJS"></div>
 
-      <div class="logo-carousel-item"><img src="https://www.digitality.es/img-articulos/ampliadas/que-es-nextjs-y-para-que-sirve-1-1697560678.jpg" alt="NextJS"></div>
+      <div class="logo-carousel-item"><img src="Images/next,js.png" alt="NextJS"></div>
       <!-- Duplicate items to create a seamless loop -->
-      <div class="logo-carousel-item"><img src="https://via.placeholder.com/150x150?text=Java" alt="Java"></div>
-      <div class="logo-carousel-item"><img src="https://via.placeholder.com/150x150?text=JavaScript" alt="JavaScript"></div>
-      <div class="logo-carousel-item"><img src="https://via.placeholder.com/150x150?text=GitHub" alt="GitHub"></div>
-      <div class="logo-carousel-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png" alt="Node.js"></div>
-      <div class="logo-carousel-item"><img src="https://seeklogo.com/images/T/tesla-logo-8068FDA2E7-seeklogo.com.png" alt="NextJS"></div>
-      <div class="logo-carousel-item"><img src="https://media.licdn.com/dms/image/C4E12AQEBVCR2SpRr9g/article-cover_image-shrink_720_1280/0/1625909824541?e=2147483647&v=beta&t=Y_zSoI8cPUR3wQvPyYK15PLWpQJJ0si6OvsuXFnIC18" alt="ReactJS"></div>
-      <div class="logo-carousel-item"><img src="https://www.digitality.es/img-articulos/ampliadas/que-es-nextjs-y-para-que-sirve-1-1697560678.jpg" alt="NextJS"></div>
-      <div class="logo-carousel-item"><img src="https://i0.wp.com/www.vibeprintco.com/wp-content/uploads/2022/02/Tesla-chrome-copy-2.jpg?fit=1800%2C1350&ssl=1" alt="NextJS"></div>
+      <div class="logo-carousel-item"><img src="Images/replit.png" alt="replit"></div>
+      <div class="logo-carousel-item"><img
+          src="https://cdn.prod.website-files.com/638ec3d4fcf5e083b0519cf8/65845505ac08fff6b48fd1c9_Canva_icon_2021.svg"
+          alt="Canva"></div>
+      <div class="logo-carousel-item"><img src="Images/github-logo-removebg-preview.png" alt="GitHub"></div>
+      <div class="logo-carousel-item"><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/640px-Node.js_logo.svg.png"
+          alt="Node.js"></div>
+      <div class="logo-carousel-item"><img src="Images/next,js.png"
+          alt="NextJS"></div>
+      <div class="logo-carousel-item"><img
+          src="Images/React js.png"
+          alt="ReactJS"></div>
+      <div class="logo-carousel-item"><img
+          src="https://www.digitality.es/img-articulos/ampliadas/que-es-nextjs-y-para-que-sirve-1-1697560678.jpg"
+          alt="NextJS"></div>
+      
 
     </div>
   </div>
- 
+
   </div>
 
 
 
 
- <br>
+  <br>
 
   <!-- TESTIMONIAL -->
-  <center>
-    <h1 class="center text-blue-500 mt-9">What Our Students Says</h1>
-  </center>
- 
-  <center><div class="testimonial-carousel-container">
-    <div class="testimonial-carousel">
-        <div class="testimonial-slide">
-            <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own projects. The community and support are incredible. Thank you, Coding Edge!</p>
-            <div class="testimonial-client">
-                <img src="https://via.placeholder.com/50" alt="Client Photo">
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="text-4xl font-bold text-blue-500 mb-4">What Our Students Say</h1>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+          Hear from our successful students who have transformed their careers with Coding Edge
+        </p>
+      </div>
+
+      <div class="testimonial-carousel-container">
+        <div class="testimonial-carousel-wrapper">
+          <div class="testimonial-carousel" id="testimonialCarousel">
+          <div class="testimonial-slide active">
+            <div class="testimonial-content">
+              <div class="quote-icon">"</div>
+              <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own
+                projects. The community and support are incredible. Thank you, Coding Edge!</p>
+              <div class="testimonial-client">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
                 <div class="testimonial-client-info">
-                    <h4>J. Doe</h4>
-                    <span>Full Stack Developer</span>
+                  <h4>John Doe</h4>
+                  <span>Full Stack Developer</span>
+                  <div class="rating">
+                    <span>★★★★★</span>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="testimonial-slide">
-            <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge is the place where I started. The people who want to get a full understanding of coding should become a part of it.</p>
-            <div class="testimonial-client">
-                <img src="https://m.economictimes.com/thumb/msid-97089587,width-1200,height-900,resizemode-4,imgsize-40518/cristiano-ronaldo.jpg" alt="Client Photo">
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="quote-icon">"</div>
+              <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge
+                is the place where I started. The people who want to get a full understanding of coding should become a part
+                of it.</p>
+              <div class="testimonial-client">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
                 <div class="testimonial-client-info">
-                    <h4>C. Ronaldo</h4>
-                    <span>The GOAT</span>
+                  <h4>Carlos Rodriguez</h4>
+                  <span>Senior Developer</span>
+                  <div class="rating">
+                    <span>★★★★★</span>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="testimonial-slide">
-            <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
-            <div class="testimonial-client">
-                <img src="https://static.generated.photos/vue-static/face-generator/landing/wall/14.jpg" alt="Client Photo">
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="quote-icon">"</div>
+              <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are
+                knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
+              <div class="testimonial-client">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
                 <div class="testimonial-client-info">
-                    <h4>A. Smith</h4>
-                    <span>Software Engineer</span>
+                  <h4>Sarah Smith</h4>
+                  <span>Software Engineer</span>
+                  <div class="rating">
+                    <span>★★★★★</span>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="testimonial-slide">
-            <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own projects. The community and support are incredible. Thank you, Coding Edge!</p>
-            <div class="testimonial-client">
-                <img src="https://data.ipic.ai/images/YlceDYgbJBcXSw7_1712121089.png" alt="Client Photo">
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="quote-icon">"</div>
+              <p>The mentorship program at Coding Edge is exceptional. My mentor guided me through complex projects and helped me land my dream job. The practical approach to learning is what sets them apart.</p>
+              <div class="testimonial-client">
+                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
                 <div class="testimonial-client-info">
-                    <h4>J. Doe</h4>
-                    <span>Full Stack Developer</span>
+                  <h4>Michael Chen</h4>
+                  <span>Frontend Developer</span>
+                  <div class="rating">
+                    <span>★★★★★</span>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="testimonial-slide">
-            <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge is the place where I started. The people who want to get a full understanding of coding should become a part of it.</p>
-            <div class="testimonial-client">
-                <img src="https://img.etimg.com/thumb/width-420,height-315,imgsize-40518,resizemode-75,msid-97089587/news/new-updates/cristiano-ronaldos-luxury-treatment-in-saudi-arabia-draws-criticism-read-here/cristiano-ronaldo.jpg" alt="Client Photo">
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="quote-icon">"</div>
+              <p>I was skeptical about online learning, but Coding Edge proved me wrong. The interactive sessions and real-world projects gave me the confidence to switch careers successfully.</p>
+              <div class="testimonial-client">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
                 <div class="testimonial-client-info">
-                    <h4>C. Ronaldo</h4>
-                    <span>The GOAT</span>
+                  <h4>Emily Johnson</h4>
+                  <span>Backend Developer</span>
+                  <div class="rating">
+                    <span>★★★★★</span>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="testimonial-slide">
-            <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
-            <div class="testimonial-client">
-                <img src="https://via.placeholder.com/50" alt="Client Photo">
-                <div class="testimonial-client-info">
-                    <h4>A. Smith</h4>
-                    <span>Software Engineer</span>
-                </div>
-            </div>
         </div>
+        
+        <!-- Navigation buttons -->
+        <button class="testimonial-nav prev" id="prevBtn" onclick="changeTestimonial(-1)">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <button class="testimonial-nav next" id="nextBtn" onclick="changeTestimonial(1)">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+        
+        <!-- Dots indicator -->
+        <div class="testimonial-dots">
+          <span class="dot active" onclick="currentTestimonial(1)"></span>
+          <span class="dot" onclick="currentTestimonial(2)"></span>
+          <span class="dot" onclick="currentTestimonial(3)"></span>
+          <span class="dot" onclick="currentTestimonial(4)"></span>
+          <span class="dot" onclick="currentTestimonial(5)"></span>
+        </div>
+      </div>
     </div>
-</div>
-</center>
-<br>
+  </section>
+  <br>
 
 
 
-<div class="enroll-section">
-  <h1 >Intersted In Our Courses? Enroll Now!
-  </h1>
- <h3 > Our courses are designed by senior developer with great experience.They on which part student will be confused , so they prepare courses in a way that no queries left.
-</h3>
-  <a href="Contact.html"><button class="btn bg-blue-900  mt-5 delay-50 hover:bg-blue-900 " > Applay Now!</button></a>
-</div>
+  <div class="enroll-section">
+    <h1>Intersted In Our Courses? Enroll Now!
+    </h1>
+    <h3> Our courses are designed by senior developer with great experience.They on which part student will be confused
+      , so they prepare courses in a way that no queries left.
+    </h3>
+    <a href="Contact.html"><button class="btn bg-blue-900  mt-5 delay-50 hover:bg-blue-900 "> Applay Now!</button></a>
+  </div>
 
 
 
@@ -602,8 +1131,8 @@
           instructors and fellow students, ask questions, and seek clarification on course materials.</p>
       </div>
       <div class="flex flex-wrap -m-4 text-center">
-        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+        <div class="p-4  md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-3 py-4 rounded-lg">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               class="text-blue-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
               <path d="M8 17l4 4 4-4m-4-5v9"></path>
@@ -652,39 +1181,88 @@
     </div>
   </section>
 
-  
+
 
 
   <script>
-    const carousel = document.querySelector=('.testimonial-carousel');
-    const testimonials = document.querySelectorAll('.testimonial-slide');
-    const totalTestimonials = testimonials.length / 2;  // Since we have duplicates
-    let index = 1;
+    // Testimonial Carousel Functionality
+    let currentTestimonialIndex = 0;
+    const testimonialCarousel = document.querySelector('.testimonial-carousel');
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const testimonialDots = document.querySelectorAll('.dot');
+    const totalSlides = testimonialSlides.length;
+    let testimonialInterval;
 
-    function updateCarousel() {
-        carousel.style.transition = 'transform 0.5s ease-in-out';
-        carousel.style.transform = `translateX(-${index * 100}%)`;
+    function updateCarouselPosition() {
+      const translateX = -currentTestimonialIndex * 20; // 20% per slide (100% / 5 slides)
+      testimonialCarousel.style.transform = `translateX(${translateX}%)`;
+      
+      // Update slide opacity and scale
+      testimonialSlides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        if (index === currentTestimonialIndex) {
+          slide.classList.add('active');
+        }
+      });
+      
+      // Update dots
+      testimonialDots.forEach((dot, index) => {
+        dot.classList.remove('active');
+        if (index === currentTestimonialIndex) {
+          dot.classList.add('active');
+        }
+      });
     }
 
-    carousel.addEventListener('transitionend', () => {
-        if (index === totalTestimonials + 1) {
-            index = 1;
-            carousel.style.transition = 'none';
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        } else if (index === 0) {
-            index = totalTestimonials;
-            carousel.style.transition = 'none';
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        }
+    function nextTestimonial() {
+      currentTestimonialIndex = (currentTestimonialIndex + 1) % totalSlides;
+      updateCarouselPosition();
+    }
+
+    function prevTestimonial() {
+      currentTestimonialIndex = (currentTestimonialIndex - 1 + totalSlides) % totalSlides;
+      updateCarouselPosition();
+    }
+
+    function changeTestimonial(direction) {
+      clearInterval(testimonialInterval);
+      if (direction === 1) {
+        nextTestimonial();
+      } else {
+        prevTestimonial();
+      }
+      startTestimonialAutoplay();
+    }
+
+    function currentTestimonial(index) {
+      clearInterval(testimonialInterval);
+      currentTestimonialIndex = index - 1;
+      updateCarouselPosition();
+      startTestimonialAutoplay();
+    }
+
+    function startTestimonialAutoplay() {
+      testimonialInterval = setInterval(nextTestimonial, 5000);
+    }
+
+    // Initialize testimonial carousel
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCarouselPosition();
+      startTestimonialAutoplay();
+      
+      // Pause autoplay on hover
+      const testimonialContainer = document.querySelector('.testimonial-carousel-container');
+      if (testimonialContainer) {
+        testimonialContainer.addEventListener('mouseenter', () => {
+          clearInterval(testimonialInterval);
+        });
+        
+        testimonialContainer.addEventListener('mouseleave', () => {
+          startTestimonialAutoplay();
+        });
+      }
     });
-
-    setInterval(() => {
-        if (index < totalTestimonials + 1) {
-            index++;
-            updateCarousel();
-        }
-    }, 5000);
-</script>
+  </script>
 
 
 
@@ -712,12 +1290,78 @@
 
 
 
-  <footer class=" absolute flex text-center gap-x-20 gap-y-3">
-    <div class="ml-4"> Coding Edge | All Rights Resrved 2024 </div>
-    <a href="FAQs.html" class="hover:text-gray-400">FAQs</a>
-    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
-    <a href="#" class="hover:text-gray-400">Terms And Conditions</a>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <h3>The Coding <span class="text-primary">Edge</span></h3>
+            <p>Empowering developers to shape the digital future with cutting-edge skills and expert guidance.</p>
+          </div>
+        </div>
 
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="Blog.html">Blogs</a></li>
+            <li><a href="FAQs.html">FAQs</a></li>
+            <li><a href="Support.html">Support Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 Coding Edge. All Rights Reserved.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
 
@@ -728,13 +1372,13 @@
 
   <script>
     // Login form handling
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
       event.preventDefault();
-      
+
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
       const messageElement = document.getElementById('loginMessage');
-      
+
       if (!email || !password) {
         messageElement.innerHTML = '<div class="alert alert-danger">Please fill in all fields</div>';
         return;
@@ -747,35 +1391,35 @@
         },
         body: JSON.stringify({ email, password }),
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
-          messageElement.innerHTML = '<div class="alert alert-success">Login successful!</div>';
-          localStorage.setItem('user', JSON.stringify({ email: email }));
-          setTimeout(() => {
-            // Close the modal after successful login
-            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-            loginModal.hide();
-          }, 1500);
-        } else {
-          messageElement.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        messageElement.innerHTML = '<div class="alert alert-danger">Login failed. Please try again.</div>';
-      });
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            messageElement.innerHTML = '<div class="alert alert-success">Login successful!</div>';
+            localStorage.setItem('user', JSON.stringify({ email: email }));
+            setTimeout(() => {
+              // Close the modal after successful login
+              const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+              loginModal.hide();
+            }, 1500);
+          } else {
+            messageElement.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          messageElement.innerHTML = '<div class="alert alert-danger">Login failed. Please try again.</div>';
+        });
     });
 
     // Signup form handling
-    document.getElementById('signupForm').addEventListener('submit', function(event) {
+    document.getElementById('signupForm').addEventListener('submit', function (event) {
       event.preventDefault();
-      
+
       const email = document.getElementById('signupEmail').value;
       const password = document.getElementById('signupPassword').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
       const messageElement = document.getElementById('signupMessage');
-      
+
       if (!email || !password || !confirmPassword) {
         messageElement.innerHTML = '<div class="alert alert-danger">Please fill in all fields</div>';
         return;
@@ -793,24 +1437,24 @@
         },
         body: JSON.stringify({ email, password }),
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
-          messageElement.innerHTML = '<div class="alert alert-success">Account created successfully!</div>';
-          document.getElementById('signupForm').reset();
-          setTimeout(() => {
-            // Close the modal after successful signup
-            const signupModal = bootstrap.Modal.getInstance(document.getElementById('signupModal'));
-            signupModal.hide();
-          }, 1500);
-        } else {
-          messageElement.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        messageElement.innerHTML = '<div class="alert alert-danger">Signup failed. Please try again.</div>';
-      });
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            messageElement.innerHTML = '<div class="alert alert-success">Account created successfully!</div>';
+            document.getElementById('signupForm').reset();
+            setTimeout(() => {
+              // Close the modal after successful signup
+              const signupModal = bootstrap.Modal.getInstance(document.getElementById('signupModal'));
+              signupModal.hide();
+            }, 1500);
+          } else {
+            messageElement.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          messageElement.innerHTML = '<div class="alert alert-danger">Signup failed. Please try again.</div>';
+        });
     });
   </script>
 </body>

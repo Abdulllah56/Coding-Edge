@@ -5,246 +5,1444 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link rel="shortcut icon" href="Images/Black Code (1).png" type="image/x-icon">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Support Us - Coding Edge</title>
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #1E1E1E;
-            border-radius: 10px;
-        }
-        h1, h2 {
-            color: #00A1F1;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #00A1F1;
-        }
-        .form-group input, .form-group select {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background-color: #333;
-            color: white;
-        }
-        .form-group input::placeholder {
-            color: #888;
-        }
-        .form-group select {
-            appearance: none;
-        }
-        .payment-methods {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        .payment-methods label {
-            cursor: pointer;
-        }
-        .payment-methods input {
-            margin-right: 10px;
-        }
-        .submit-btn {
-            display: block;
-            width: calc(100% - 22px);
-            padding: 10px;
-            background-color: #00A1F1;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 20px auto;
-        }
-        .submit-btn:hover {
-            background-color: #16389d;
-        }
-        .card-icons img {
-            width: 50px;
-            margin-right: 10px;
-            display: none;
-        }
-        .card-icons img.active {
-            display: inline-block;
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --secondary-color: #1a1a1a;
+            --background-dark: #0a0a0a;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.3);
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
         }
 
-        center{
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--secondary-color) 50%, var(--background-dark) 100%);
+            color: var(--text-light);
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Enhanced Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 120px 0 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 26, 26, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            display: block;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+            border-color: var(--border-color);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
             font-weight: 700;
-            font-size: 39px;
-        margin-bottom: 10px;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Enhanced Support Container */
+        .support-container {
+            max-width: 1200px;
+            margin: -60px auto 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .info-section:hover::before {
+            opacity: 1;
+        }
+
+        .info-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-title i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .info-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        .impact-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .features-list li:hover {
+            padding-left: 1rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 10px;
+            border-bottom-color: transparent;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Enhanced Form Section */
+        .form-section {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-section:hover::before {
+            opacity: 1;
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .amount-btn {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .amount-btn:hover,
+        .amount-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-input.error {
+            border-color: var(--error-color);
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+        }
+
+        .form-input.success {
+            border-color: var(--success-color);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1.2rem;
+            top: calc(50% + 0.75rem);
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .form-group:has(.form-label) .input-icon {
+            top: calc(50% + 1rem);
+        }
+
+        .form-input:focus + .input-icon {
+            color: var(--primary-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: none;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Card Icons */
+        .card-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 35px;
+            border-radius: 8px;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .card-icon.active {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            position: relative;
+        }
+
+        .payment-method input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .payment-method label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .payment-method input:checked + label {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .payment-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-text {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        .submit-btn.loading .loading-spinner {
+            display: block;
+        }
+
+        .submit-btn.loading .btn-icon {
+            display: none;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 60px 0;
+                background-attachment: scroll;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                padding: 1rem;
+                min-width: 100px;
+            }
+
+            .support-container {
+                padding: 0 1rem;
+                margin-top: -40px;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .info-section,
+            .form-section {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 60vh;
+                padding: 80px 0 40px 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                max-width: 300px;
+            }
+
+            .stat-item {
+                padding: 1rem;
+                min-width: auto;
+            }
+
+            .info-section,
+            .form-section {
+                padding: 1.5rem;
+            }
+
+            .donation-amounts {
+                grid-template-columns: 1fr;
+            }
+
+            .amount-btn {
+                padding: 0.8rem;
+            }
+
+            .form-input {
+                padding: 0.8rem 2.5rem 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .input-icon {
+                right: 1rem;
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .card-icons {
+                gap: 0.5rem;
+            }
+
+            .card-icon {
+                width: 40px;
+                height: 28px;
+            }
+        }
+
+        /* Enhanced Navbar Compatibility */
+        .navbar {
+            z-index: 9999 !important;
+        }
+
+        /* Footer Enhancements */
+        .site-footer {
+            margin-top: 6rem;
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--secondary-color) 100%);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 1rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-dark border-botom border-body" data-bs-theme="dark">
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">The Coding <span class="text-primary"> Edge</span></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link "  href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="About.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link "  href="Services.html">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link "  href="Blog.html">Blogs</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link "  href="Support.html">Support Us</a>
-              </li>
-  
-              <li class="nav-item">
-                <a class="nav-link"  href="Contact.html">Contact</a>
-              </li>
-  
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                More
-                </a>
-                <ul class="dropdown-menu">
-                
-                  <li><a class="dropdown-item" href="WFU.html">Write For Us</a></li>
-                  <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
-                  
-                 
+            <a class="navbar-brand" href="index.html">The Coding <span class="text-primary">Edge</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Blog.html">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Support.html">Support Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-          </div>
-          <div>
-          </div>
-        </div>
-      </nav>
-
-<div class="container">
-                      <center><h1>Support Us</h1></center>
-    <p>At Coding Edge, we strive to provide affordable and accessible coding education to everyone. Your support helps us create more free courses for underserved students. Thank you for your generosity!</p>
-  
-    <form action="#" method="POST">
-        <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
-        </div>
-        <div class="form-group">
-            <label for="card-number">Card Number</label>
-            <input type="text" id="card-number" name="card-number" placeholder="Card Number" required>
-            <div class="card-icons">
-                <img src="https://logowik.com/content/uploads/images/visa-payment-card1873.jpg" id="visa-icon" alt="Visa">
-                <img src="https://w7.pngwing.com/pngs/397/885/png-transparent-logo-mastercard-product-font-mastercard-text-orange-logo.png" id="mastercard-icon" alt="MasterCard">
-                <img src="https://img.icons8.com/color/48/000000/amex.png" id="amex-icon" alt="American Express">
-                <img src="https://img.icons8.com/color/48/000000/discover.png" id="discover-icon" alt="Discover">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
             </div>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" required>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-heart"></i> Support Our Mission
+            </div>
+            <h1 class="hero-title">Empower the Next Generation of Coders</h1>
+            <p class="hero-subtitle">
+                Your support helps us provide free, high-quality coding education to students worldwide. 
+                Together, we're building a more inclusive tech future.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Students Helped</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Free Courses</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="country">Continent</label>
-            <select id="country" name="country" required>
-                <option value="EU">Europe</option>
-                <option value="AS">Asia</option>
-                <option value="AF">Africa</option>
-                <option value="NA">North America</option>
-                <option value="SA">South America</option>
-                <!-- Add more countries as needed -->
-            </select>
+    </section>
+
+    <!-- Enhanced Support Container -->
+    <div class="support-container">
+        <div class="support-grid">
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Why Your Support Matters
+                </h2>
+                <p class="info-description">
+                    At Coding Edge, we believe that quality education should be accessible to everyone, 
+                    regardless of their financial background. Your generous donation helps us maintain 
+                    our free courses, develop new content, and support students on their coding journey.
+                </p>
+
+                <div class="impact-stats">
+                    <div class="impact-item">
+                        <span class="impact-number">$25</span>
+                        <span class="impact-label">Supports 1 Student</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number">$50</span>
+                        <span class="impact-label">Creates New Content</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number">$100</span>
+                        <span class="impact-label">Funds Full Course</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number">$150+</span>
+                        <span class="impact-label">Funds Mentorship</span>
+                    </div>
+                </div>
+
+                <ul class="features-list">
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <span class="feature-text">Free access to premium coding courses</span>
+                    </li>
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="feature-text">Mentorship programs for underserved students</span>
+                    </li>
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <span class="feature-text">Industry-recognized certifications</span>
+                    </li>
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <span class="feature-text">Career placement assistance</span>
+                    </li>
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span class="feature-text">Global community of learners</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Enhanced Form Section -->
+            <div class="form-section">
+                <h2 class="form-title">Make a Donation</h2>
+                <p class="form-subtitle">Choose your contribution amount and help us change lives through code</p>
+
+                <div class="donation-amounts">
+                    <button type="button" class="amount-btn" data-amount="25">$25</button>
+                    <button type="button" class="amount-btn" data-amount="50">$50</button>
+                    <button type="button" class="amount-btn" data-amount="100">$100</button>
+                    <button type="button" class="amount-btn" data-amount="250">$250</button>
+                    <button type="button" class="amount-btn" data-amount="500">$500</button>
+                    <button type="button" class="amount-btn" data-amount="custom">Custom</button>
+                </div>
+
+                <form id="donationForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Enter your first name" required>
+                            <i class="fas fa-user input-icon"></i>
+                            <div class="error-message" id="firstNameError">Please enter your first name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Enter your last name" required>
+                            <i class="fas fa-user input-icon"></i>
+                            <div class="error-message" id="lastNameError">Please enter your last name</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email address" required>
+                        <i class="fas fa-envelope input-icon"></i>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country" class="form-label">Continent</label>
+                            <select id="country" name="country" class="form-input" required>
+                                <option value="">Select your continent</option>
+                                <option value="NA">North America</option>
+                                <option value="SA">South America</option>
+                                <option value="EU">Europe</option>
+                                <option value="AS">Asia</option>
+                                <option value="AF">Africa</option>
+                                <option value="OC">Oceania</option>
+                            </select>
+                            <i class="fas fa-globe input-icon"></i>
+                            <div class="error-message" id="countryError">Please select your continent</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="zipCode" class="form-label">ZIP Code</label>
+                            <input type="text" id="zipCode" name="zipCode" class="form-input" placeholder="Enter your ZIP code" required>
+                            <i class="fas fa-map-marker-alt input-icon"></i>
+                            <div class="error-message" id="zipCodeError">Please enter your ZIP code</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="amount" class="form-label">Donation Amount ($)</label>
+                        <input type="number" id="amount" name="amount" class="form-input" placeholder="Enter donation amount" min="1" required>
+                        <i class="fas fa-dollar-sign input-icon"></i>
+                        <div class="error-message" id="amountError">Please enter a valid donation amount</div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="cardNumber" class="form-label">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        <i class="fas fa-credit-card input-icon"></i>
+                        <div class="error-message" id="cardNumberError">Please enter a valid card number</div>
+                        <div class="card-icons">
+                            <img src="https://logowik.com/content/uploads/images/visa-payment-card1873.jpg" class="card-icon" id="visaIcon" alt="Visa">
+                            <img src="https://w7.pngwing.com/pngs/397/885/png-transparent-logo-mastercard-product-font-mastercard-text-orange-logo.png" class="card-icon" id="mastercardIcon" alt="MasterCard">
+                            <img src="https://img.icons8.com/color/48/000000/amex.png" class="card-icon" id="amexIcon" alt="American Express">
+                            <img src="https://img.icons8.com/color/48/000000/discover.png" class="card-icon" id="discoverIcon" alt="Discover">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate" class="form-label">Expiry Date</label>
+                            <input type="text" id="expiryDate" name="expiryDate" class="form-input" placeholder="MM/YY" maxlength="5" required>
+                            <i class="fas fa-calendar input-icon"></i>
+                            <div class="error-message" id="expiryDateError">Please enter expiry date (MM/YY)</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" maxlength="4" required>
+                            <i class="fas fa-lock input-icon"></i>
+                            <div class="error-message" id="cvvError">Please enter CVV</div>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <input type="radio" id="card" name="paymentMethod" value="card" checked>
+                            <label for="card">
+                                <i class="fas fa-credit-card payment-icon"></i>
+                                Credit Card
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+                            <label for="paypal">
+                                <i class="fab fa-paypal payment-icon"></i>
+                                PayPal
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">
+                            <div class="loading-spinner"></div>
+                            <i class="fas fa-heart btn-icon"></i>
+                            Donate Now
+                        </span>
+                    </button>
+
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle success-icon"></i>
+                        <h3>Thank You for Your Generous Donation!</h3>
+                        <p>Your support means the world to us and will help countless students achieve their coding dreams.</p>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="zip-code">ZIP Code</label>
-            <input type="text" id="zip-code" name="zip-code" placeholder="ZIP Code" required>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div>Coding Edge | All Rights Reserved 2024</div>
+            <div class="footer-links">
+                <a href="FAQs.html">FAQs</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms And Conditions</a>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="amount">Donation Amount</label>
-            <input type="number" id="amount" name="amount" placeholder="Donation Amount" required>
-        </div>
-        <div class="payment-methods">
-            <label>
-                <input type="radio" name="payment-method" value="card" checked> Card
-            </label>
-            <label>
-                <input type="radio" name="payment-method" value="paypal"> PayPal
-            </label>
-        </div>
-        <button type="submit" class="submit-btn bg-primarys" id="submit-btn">Donate Now</button>
-    </form>
-</div>
+    </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // Enhanced JavaScript for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('donationForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            const amountInput = document.getElementById('amount');
+            const cardNumberInput = document.getElementById('cardNumber');
+            const expiryDateInput = document.getElementById('expiryDate');
+            const cvvInput = document.getElementById('cvv');
 
-<footer class=" absolute flex text-center gap-x-20 gap-y-3">
-    <div class="ml-4"> Coding Edge | All Rights Resrved 2024 </div>
-    <a href="FAQs.html" class="hover:text-gray-400">FAQs</a>
-    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
-    <a href="#" class="hover:text-gray-400">Terms And Conditions</a>
+            // Card icons
+            const cardIcons = {
+                visa: document.getElementById('visaIcon'),
+                mastercard: document.getElementById('mastercardIcon'),
+                amex: document.getElementById('amexIcon'),
+                discover: document.getElementById('discoverIcon')
+            };
 
-  </footer>
-  
-<script>
+            // Amount button functionality
+            amountBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    amountBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const amount = this.dataset.amount;
+                    if (amount !== 'custom') {
+                        amountInput.value = amount;
+                        validateField(amountInput);
+                    } else {
+                        amountInput.value = '';
+                        amountInput.focus();
+                    }
+                });
+            });
 
-let btn=document.getElementById("submit-btn")
-btn.addEventListener("click",()=>{
-    alert("Thankyou For YOur Donation")
-})
+            // Card number formatting and validation
+            cardNumberInput.addEventListener('input', function() {
+                let value = this.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                
+                this.value = formattedValue;
+                
+                // Reset all card icons
+                Object.values(cardIcons).forEach(icon => icon.classList.remove('active'));
+                
+                // Detect card type
+                if (/^4/.test(value)) {
+                    cardIcons.visa.classList.add('active');
+                } else if (/^5[1-5]/.test(value)) {
+                    cardIcons.mastercard.classList.add('active');
+                } else if (/^3[47]/.test(value)) {
+                    cardIcons.amex.classList.add('active');
+                } else if (/^6/.test(value)) {
+                    cardIcons.discover.classList.add('active');
+                }
+                
+                validateField(this);
+            });
 
-    const cardNumberInput = document.getElementById('card-number');
-    const visaIcon = document.getElementById('visa-icon');
-    const masterCardIcon = document.getElementById('mastercard-icon');
-    const amexIcon = document.getElementById('amex-icon');
-    const discoverIcon = document.getElementById('discover-icon');
+            // Expiry date formatting
+            expiryDateInput.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                this.value = value;
+                validateField(this);
+            });
 
-    cardNumberInput.addEventListener('input', function () {
-        const cardNumber = cardNumberInput.value;
-        visaIcon.classList.remove('active');
-        masterCardIcon.classList.remove('active');
-        amexIcon.classList.remove('active');
-        discoverIcon.classList.remove('active');
+            // CVV validation
+            cvvInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '');
+                validateField(this);
+            });
 
-        if (/^4[0-9]{12}(?:[0-9]{3})?$/.test(cardNumber)) {
-            visaIcon.classList.add('active');
-        } else if (/^5[1-5][0-9]{14}$/.test(cardNumber)) {
-            masterCardIcon.classList.add('active');
-        } else if (/^3[47][0-9]{13}$/.test(cardNumber)) {
-            amexIcon.classList.add('active');
-        } else if (/^6(?:011|5[0-9]{2})[0-9]{12}$/.test(cardNumber)) {
-            discoverIcon.classList.add('active');
-        }
-    });
-</script>
+            // Real-time validation for all inputs
+            const inputs = form.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => validateField(input));
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('error')) {
+                        validateField(input);
+                    }
+                });
+            });
 
+            // Validation function
+            function validateField(field) {
+                const value = field.value.trim();
+                const fieldName = field.name;
+                let isValid = true;
+                let errorMessage = '';
+
+                // Remove existing validation classes
+                field.classList.remove('error', 'success');
+                const errorElement = document.getElementById(fieldName + 'Error');
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+
+                // Validation logic
+                switch (fieldName) {
+                    case 'firstName':
+                    case 'lastName':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = `Please enter your ${fieldName === 'firstName' ? 'first' : 'last'} name`;
+                        } else if (value.length < 2) {
+                            isValid = false;
+                            errorMessage = 'Name must be at least 2 characters';
+                        }
+                        break;
+                    
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Please enter your email address';
+                        } else if (!emailRegex.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid email address';
+                        }
+                        break;
+                    
+                    case 'country':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Please select your continent';
+                        }
+                        break;
+                    
+                    case 'zipCode':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Please enter your ZIP code';
+                        } else if (value.length < 3) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid ZIP code';
+                        }
+                        break;
+                    
+                    case 'amount':
+                        const amount = parseFloat(value);
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Please enter a donation amount';
+                        } else if (isNaN(amount) || amount < 1) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid amount (minimum $1)';
+                        } else if (amount > 10000) {
+                            isValid = false;
+                            errorMessage = 'Maximum donation amount is $10,000';
+                        }
+                        break;
+                    
+                    case 'cardNumber':
+                        const cardNumber = value.replace(/\s/g, '');
+                        if (!cardNumber) {
+                            isValid = false;
+                            errorMessage = 'Please enter your card number';
+                        } else if (cardNumber.length < 13 || cardNumber.length > 19) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid card number';
+                        }
+                        break;
+                    
+                    case 'expiryDate':
+                        const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Please enter expiry date';
+                        } else if (!expiryRegex.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter date in MM/YY format';
+                        } else {
+                            // Check if date is not expired
+                            const [month, year] = value.split('/');
+                            const expiry = new Date(2000 + parseInt(year), parseInt(month) - 1);
+                            const now = new Date();
+                            if (expiry < now) {
+                                isValid = false;
+                                errorMessage = 'Card has expired';
+                            }
+                        }
+                        break;
+                    
+                    case 'cvv':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Please enter CVV';
+                        } else if (value.length < 3 || value.length > 4) {
+                            isValid = false;
+                            errorMessage = 'CVV must be 3-4 digits';
+                        }
+                        break;
+                }
+
+                // Apply validation result
+                if (isValid) {
+                    field.classList.add('success');
+                } else {
+                    field.classList.add('error');
+                    if (errorElement) {
+                        errorElement.textContent = errorMessage;
+                        errorElement.classList.add('show');
+                    }
+                }
+
+                return isValid;
+            }
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all fields
+                let isFormValid = true;
+                inputs.forEach(input => {
+                    if (!validateField(input)) {
+                        isFormValid = false;
+                    }
+                });
+
+                if (isFormValid) {
+                    // Show loading state
+                    submitBtn.classList.add('loading');
+                    submitBtn.disabled = true;
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Hide loading state
+                        submitBtn.classList.remove('loading');
+                        submitBtn.disabled = false;
+
+                        // Show success message
+                        successMessage.classList.add('show');
+                        form.style.display = 'none';
+
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+
+                        // Reset form after delay
+                        setTimeout(() => {
+                            form.reset();
+                            form.style.display = 'block';
+                            successMessage.classList.remove('show');
+                            
+                            // Reset validation states
+                            inputs.forEach(input => {
+                                input.classList.remove('error', 'success');
+                            });
+                            
+                            // Reset amount buttons
+                            amountBtns.forEach(btn => btn.classList.remove('active'));
+                            
+                            // Reset card icons
+                            Object.values(cardIcons).forEach(icon => icon.classList.remove('active'));
+                        }, 5000);
+                    }, 2000);
+                } else {
+                    // Scroll to first error
+                    const firstError = form.querySelector('.form-input.error');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstError.focus();
+                    }
+                }
+            });
+
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add entrance animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.info-section, .form-section').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>

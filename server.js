@@ -217,6 +217,31 @@ app.get('/health', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+// Serve other HTML pages
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
+});
+
+app.get('/project', (req, res) => {
+  res.sendFile(path.join(__dirname, 'project.html'));
+});
+
+// Also serve with .html extension
+app.get('/about.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+app.get('/contact.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
+});
+
+app.get('/project.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'project.html'));
+});
 
 // Start server
 app.listen(PORT, () => {

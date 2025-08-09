@@ -1,5 +1,6 @@
 {
     "pieces.cloudCapabilities": "Blended",
     "pieces.telemetry": true,
-    "liveServer.settings.port": 5503
+    "liveServer.settings.port": 5503,
+    "codium.codeCompletion.enable": true
 }

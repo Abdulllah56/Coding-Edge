@@ -1,13 +1,10 @@
-@echo off
 echo Starting Coding Edge Server...
 echo.
-echo Installing dependencies (if needed)...
-call npm install
+echo Server will run on http://localhost:3000
+echo Contact form submissions will be logged to this console
+echo Admin panel available at http://localhost:3000/admin.html
 echo.
-echo Starting the server on http://localhost:3000
-echo.
-echo IMPORTANT: Keep this window open while testing the contact form
 echo Press Ctrl+C to stop the server
 echo.
-call npm start
+npm start
 pause

@@ -52,48 +52,32 @@
     }
 
     .testimonial-carousel-wrapper {
+      position: relative;
       overflow: hidden;
       border-radius: 15px;
-      position: relative;
-      height: 400px;
+      height: 450px;
     }
 
     .testimonial-carousel {
-      position: relative;
-      width: 100%;
+      display: flex;
+      transition: transform 0.5s ease-in-out;
       height: 100%;
     }
 
     .testimonial-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      min-width: 100%;
       padding: 40px 30px;
       text-align: center;
       box-sizing: border-box;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .testimonial-slide.active {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .testimonial-slide.prev {
-      transform: translateX(-100%);
-    }
-
-    .testimonial-slide.next {
-      transform: translateX(100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .testimonial-content {
       position: relative;
       z-index: 2;
+      max-width: 700px;
     }
 
     .quote-icon {
@@ -111,9 +95,6 @@
       color: #e2e8f0;
       margin-bottom: 30px;
       font-style: italic;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .testimonial-client {
@@ -186,6 +167,11 @@
       box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
     }
 
+    .testimonial-nav:focus {
+      outline: 3px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
     .testimonial-nav.prev {
       left: -25px;
     }
@@ -207,6 +193,7 @@
       height: 12px;
       border-radius: 50%;
       background: rgba(148, 163, 184, 0.4);
+      border: none;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -222,10 +209,23 @@
       transform: scale(1.1);
     }
 
+    .dot:focus {
+      outline: 3px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .testimonial-carousel-container {
         margin: 0 20px;
+        padding: 30px 20px;
+      }
+
+      .testimonial-carousel-wrapper {
+        height: 500px;
+      }
+
+      .testimonial-slide {
         padding: 30px 20px;
       }
 
@@ -991,116 +991,112 @@
       <div class="testimonial-carousel-container">
         <div class="testimonial-carousel-wrapper">
           <div class="testimonial-carousel" id="testimonialCarousel">
-          <div class="testimonial-slide active">
-            <div class="testimonial-content">
-              <div class="quote-icon">"</div>
-              <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own
-                projects. The community and support are incredible. Thank you, Coding Edge!</p>
-              <div class="testimonial-client">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
-                <div class="testimonial-client-info">
-                  <h4>John Doe</h4>
-                  <span>Full Stack Developer</span>
-                  <div class="rating">
-                    <span>★★★★★</span>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">"</div>
+                <p>The learning experience at Coding Edge is unmatched. I went from a complete beginner to building my own
+                  projects. The community and support are incredible. Thank you, Coding Edge!</p>
+                <div class="testimonial-client">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="John Doe" loading="lazy">
+                  <div class="testimonial-client-info">
+                    <h4>John Doe</h4>
+                    <span>Full Stack Developer</span>
+                    <div class="rating">
+                      <span>★★★★★</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">"</div>
+                <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge
+                  is the place where I started. The people who want to get a full understanding of coding should become a part
+                  of it.</p>
+                <div class="testimonial-client">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Carlos Rodriguez" loading="lazy">
+                  <div class="testimonial-client-info">
+                    <h4>Carlos Rodriguez</h4>
+                    <span>Senior Developer</span>
+                    <div class="rating">
+                      <span>★★★★★</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">"</div>
+                <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are
+                  knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
+                <div class="testimonial-client">
+                  <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Sarah Smith" loading="lazy">
+                  <div class="testimonial-client-info">
+                    <h4>Sarah Smith</h4>
+                    <span>Software Engineer</span>
+                    <div class="rating">
+                      <span>★★★★★</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">"</div>
+                <p>The mentorship program at Coding Edge is exceptional. My mentor guided me through complex projects and helped me land my dream job. The practical approach to learning is what sets them apart.</p>
+                <div class="testimonial-client">
+                  <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face" alt="Michael Chen" loading="lazy">
+                  <div class="testimonial-client-info">
+                    <h4>Michael Chen</h4>
+                    <span>Frontend Developer</span>
+                    <div class="rating">
+                      <span>★★★★★</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">"</div>
+                <p>I was skeptical about online learning, but Coding Edge proved me wrong. The interactive sessions and real-world projects gave me the confidence to switch careers successfully.</p>
+                <div class="testimonial-client">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Emily Johnson" loading="lazy">
+                  <div class="testimonial-client-info">
+                    <h4>Emily Johnson</h4>
+                    <span>Backend Developer</span>
+                    <div class="rating">
+                      <span>★★★★★</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div class="testimonial-slide">
-            <div class="testimonial-content">
-              <div class="quote-icon">"</div>
-              <p>When I joined Coding Edge I didn't know anything about coding but now I am a senior developer. Coding Edge
-                is the place where I started. The people who want to get a full understanding of coding should become a part
-                of it.</p>
-              <div class="testimonial-client">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
-                <div class="testimonial-client-info">
-                  <h4>Carlos Rodriguez</h4>
-                  <span>Senior Developer</span>
-                  <div class="rating">
-                    <span>★★★★★</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-slide">
-            <div class="testimonial-content">
-              <div class="quote-icon">"</div>
-              <p>Coding Edge has transformed my coding skills. The courses are comprehensive and the instructors are
-                knowledgeable. I highly recommend Coding Edge for anyone looking to improve their coding abilities.</p>
-              <div class="testimonial-client">
-                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
-                <div class="testimonial-client-info">
-                  <h4>Sarah Smith</h4>
-                  <span>Software Engineer</span>
-                  <div class="rating">
-                    <span>★★★★★</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-slide">
-            <div class="testimonial-content">
-              <div class="quote-icon">"</div>
-              <p>The mentorship program at Coding Edge is exceptional. My mentor guided me through complex projects and helped me land my dream job. The practical approach to learning is what sets them apart.</p>
-              <div class="testimonial-client">
-                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
-                <div class="testimonial-client-info">
-                  <h4>Michael Chen</h4>
-                  <span>Frontend Developer</span>
-                  <div class="rating">
-                    <span>★★★★★</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-slide">
-            <div class="testimonial-content">
-              <div class="quote-icon">"</div>
-              <p>I was skeptical about online learning, but Coding Edge proved me wrong. The interactive sessions and real-world projects gave me the confidence to switch careers successfully.</p>
-              <div class="testimonial-client">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Client Photo">
-                <div class="testimonial-client-info">
-                  <h4>Emily Johnson</h4>
-                  <span>Backend Developer</span>
-                  <div class="rating">
-                    <span>★★★★★</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         </div>
         
         <!-- Navigation buttons -->
-        <button class="testimonial-nav prev" id="prevBtn" onclick="changeTestimonial(-1)">
+        <button class="testimonial-nav prev" id="prevBtn" type="button" aria-label="Previous testimonial">
           <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
           </svg>
         </button>
-        <button class="testimonial-nav next" id="nextBtn" onclick="changeTestimonial(1)">
+        <button class="testimonial-nav next" id="nextBtn" type="button" aria-label="Next testimonial">
           <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
         </button>
         
         <!-- Dots indicator -->
-        <div class="testimonial-dots">
-          <span class="dot active" onclick="currentTestimonial(1)"></span>
-          <span class="dot" onclick="currentTestimonial(2)"></span>
-          <span class="dot" onclick="currentTestimonial(3)"></span>
-          <span class="dot" onclick="currentTestimonial(4)"></span>
-          <span class="dot" onclick="currentTestimonial(5)"></span>
+        <div class="testimonial-dots" id="testimonialDots">
+          <button class="dot active" data-slide="0" aria-label="Go to testimonial 1"></button>
+          <button class="dot" data-slide="1" aria-label="Go to testimonial 2"></button>
+          <button class="dot" data-slide="2" aria-label="Go to testimonial 3"></button>
+          <button class="dot" data-slide="3" aria-label="Go to testimonial 4"></button>
+          <button class="dot" data-slide="4" aria-label="Go to testimonial 5"></button>
         </div>
       </div>
     </div>
@@ -1185,82 +1181,149 @@
 
 
   <script>
-    // Testimonial Carousel Functionality
-    let currentTestimonialIndex = 0;
-    const testimonialCarousel = document.querySelector('.testimonial-carousel');
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const testimonialDots = document.querySelectorAll('.dot');
-    const totalSlides = testimonialSlides.length;
-    let testimonialInterval;
-
-    function updateCarouselPosition() {
-      const translateX = -currentTestimonialIndex * 20; // 20% per slide (100% / 5 slides)
-      testimonialCarousel.style.transform = `translateX(${translateX}%)`;
+    // Simple Testimonial Carousel
+    document.addEventListener('DOMContentLoaded', function () {
+      const carousel = document.getElementById('testimonialCarousel');
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const dots = document.querySelectorAll('.dot');
+      const container = document.querySelector('.testimonial-carousel-container');
       
-      // Update slide opacity and scale
-      testimonialSlides.forEach((slide, index) => {
-        slide.classList.remove('active');
-        if (index === currentTestimonialIndex) {
-          slide.classList.add('active');
-        }
-      });
-      
-      // Update dots
-      testimonialDots.forEach((dot, index) => {
-        dot.classList.remove('active');
-        if (index === currentTestimonialIndex) {
-          dot.classList.add('active');
-        }
-      });
-    }
+      let currentIndex = 0;
+      let autoplayInterval;
+      let isHovered = false;
 
-    function nextTestimonial() {
-      currentTestimonialIndex = (currentTestimonialIndex + 1) % totalSlides;
-      updateCarouselPosition();
-    }
-
-    function prevTestimonial() {
-      currentTestimonialIndex = (currentTestimonialIndex - 1 + totalSlides) % totalSlides;
-      updateCarouselPosition();
-    }
-
-    function changeTestimonial(direction) {
-      clearInterval(testimonialInterval);
-      if (direction === 1) {
-        nextTestimonial();
-      } else {
-        prevTestimonial();
-      }
-      startTestimonialAutoplay();
-    }
-
-    function currentTestimonial(index) {
-      clearInterval(testimonialInterval);
-      currentTestimonialIndex = index - 1;
-      updateCarouselPosition();
-      startTestimonialAutoplay();
-    }
-
-    function startTestimonialAutoplay() {
-      testimonialInterval = setInterval(nextTestimonial, 5000);
-    }
-
-    // Initialize testimonial carousel
-    document.addEventListener('DOMContentLoaded', function() {
-      updateCarouselPosition();
-      startTestimonialAutoplay();
-      
-      // Pause autoplay on hover
-      const testimonialContainer = document.querySelector('.testimonial-carousel-container');
-      if (testimonialContainer) {
-        testimonialContainer.addEventListener('mouseenter', () => {
-          clearInterval(testimonialInterval);
-        });
+      // Update carousel position
+      function updateCarousel() {
+        const translateX = -currentIndex * 100;
+        carousel.style.transform = `translateX(${translateX}%)`;
         
-        testimonialContainer.addEventListener('mouseleave', () => {
-          startTestimonialAutoplay();
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
         });
       }
+
+      // Go to specific slide
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+        restartAutoplay();
+      }
+
+      // Next slide
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      }
+
+      // Previous slide
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      }
+
+      // Start autoplay
+      function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+          if (!isHovered) {
+            nextSlide();
+          }
+        }, 5000);
+      }
+
+      // Stop autoplay
+      function stopAutoplay() {
+        if (autoplayInterval) {
+          clearInterval(autoplayInterval);
+        }
+      }
+
+      // Restart autoplay
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      // Event listeners
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          prevSlide();
+          restartAutoplay();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          nextSlide();
+          restartAutoplay();
+        });
+      }
+
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          goToSlide(index);
+        });
+      });
+
+      // Hover pause
+      if (container) {
+        container.addEventListener('mouseenter', () => {
+          isHovered = true;
+        });
+
+        container.addEventListener('mouseleave', () => {
+          isHovered = false;
+        });
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.target.closest('.testimonial-carousel-container')) {
+          switch (e.key) {
+            case 'ArrowLeft':
+              e.preventDefault();
+              prevSlide();
+              restartAutoplay();
+              break;
+            case 'ArrowRight':
+              e.preventDefault();
+              nextSlide();
+              restartAutoplay();
+              break;
+          }
+        }
+      });
+
+      // Touch/swipe support
+      let startX = 0;
+      let endX = 0;
+
+      if (container) {
+        container.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        });
+
+        container.addEventListener('touchend', (e) => {
+          endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              nextSlide();
+            } else {
+              prevSlide();
+            }
+            restartAutoplay();
+          }
+        });
+      }
+
+      // Initialize
+      updateCarousel();
+      startAutoplay();
     });
   </script>
 
@@ -1371,6 +1434,14 @@
     crossorigin="anonymous"></script>
 
   <script>
+    // Get API base URL based on environment
+    const getApiUrl = () => {
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:3000';
+      }
+      return ''; // Use relative URLs for production
+    };
+
     // Login form handling
     document.getElementById('loginForm').addEventListener('submit', function (event) {
       event.preventDefault();
@@ -1384,7 +1455,7 @@
         return;
       }
 
-      fetch('http://localhost:3000/login', {
+      fetch(`${getApiUrl()}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1430,7 +1501,7 @@
         return;
       }
 
-      fetch('http://localhost:3000/signup', {
+      fetch(`${getApiUrl()}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -998,6 +998,15 @@ button.start-button:hover{
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     border: 1px solid rgba(59, 130, 246, 0.3);
     backdrop-filter: blur(10px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-carousel {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .testimonial-slide {
@@ -1005,6 +1014,10 @@ button.start-button:hover{
     padding: 2rem;
     box-sizing: border-box;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .testimonial-slide p {
@@ -1041,6 +1054,7 @@ button.start-button:hover{
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .testimonial-client img {
@@ -1288,52 +1302,50 @@ footer a:hover {
 /* Responsive Enhancements */
 @media (max-width: 768px) {
     .testimonial-carousel-container {
-        width: 95%;
-        padding: 1.5rem;
-    }
-    
-    .testimonial-slide {
+        width: 98%;
         padding: 1rem;
     }
-    
-    .testimonial-slide p {
-        font-size: 1rem;
+    .testimonial-slide {
+        padding: 1rem 0.5rem;
     }
-    
-    .enroll-section {
-        padding: 3rem 1rem;
-        min-height: 350px;
-    }
-    
-    .logo-carousel-container {
-        padding: 2rem 0;
-    }
-    
-    .row.mb-2 {
-        padding: 0 0.5rem;
+    .testimonial-client {
+        gap: 0.5rem;
     }
 }
 
 @media (max-width: 480px) {
+    .testimonial-carousel-container {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-radius: 0;
+    }
+    .testimonial-slide {
+        padding: 0.5rem 0.2rem;
+        min-width: 100vw;
+        box-sizing: border-box;
+    }
     .testimonial-client {
         flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
     }
-    
     .testimonial-client-info {
         text-align: center;
     }
-    
-    .enroll-section {
-        padding: 2rem 1rem;
-        min-height: 300px;
+    .testimonial-carousel {
+        min-width: 100vw;
     }
-    
-    .col-auto img {
-        width: 150px;
-        height: 120px;
+    .testimonial-dots {
+        justify-content: center;
+        display: flex;
+        margin-top: 0.5rem;
+    }
+    .testimonial-nav {
+        margin: 0 0.2rem;
     }
 }
+
 /* Additional Course Card Enhancements */
 .course-description p {
     font-size: 0.95rem;

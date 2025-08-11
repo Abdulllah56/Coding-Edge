@@ -1,172 +1,116 @@
 # Coding Edge Website
 
-A professional coding education platform with contact form email functionality.
+A modern, responsive website for coding education with full-stack functionality.
 
 ## Features
 
-- Professional website design with multiple pages
-- Contact form with email notifications
-- Responsive design for all devices
-- Modern UI with animations and effects
-- Email integration using Gmail SMTP
+- **Responsive Design**: Works on all devices
+- **User Authentication**: Login/Signup functionality
+- **Contact Form**: Fully functional contact form with backend processing
+- **Testimonial Carousel**: Interactive testimonial slider
+- **Admin Panel**: View contact form submissions
+- **Dual Environment Support**: Works locally and on Vercel
 
-## Setup Instructions
+## Local Development
 
 ### Prerequisites
+- Node.js (v14 or higher)
+- npm
 
-- Node.js (version 14 or higher)
-- npm (comes with Node.js)
-- Gmail account with App Password enabled
-
-### Local Development
-
-1. **Install Dependencies**
+### Setup
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. **Environment Configuration**
-   - The `.env` file is already configured with your email credentials
-   - For security, consider using environment variables in production
-
-3. **Start the Server**
+2. Start the server:
    ```bash
    npm start
    ```
-   
-   For development with auto-restart:
-   ```bash
-   npm run dev
-   ```
+   Or double-click `start-server.bat` on Windows
 
-4. **Access the Website**
-   - Open your browser and go to `http://localhost:3000`
-   - The contact form will be fully functional
+3. Open your browser and visit:
+   - Main website: http://localhost:3000
+   - Admin panel: http://localhost:3000/admin.html
 
-### Email Configuration
+### How it works locally:
 
-The email system is configured to:
-- Send contact form submissions to: `muhammadabdullahbaig3750@gmail.com`
-- Send auto-reply confirmations to users
-- Use Gmail SMTP with your app password: `ytni oatr rlwu sxgq`
+1. **With Node.js server (localhost:3000)**:
+   - Full functionality including contact form
+   - Login/Signup works
+   - Contact submissions are logged to console
+   - Admin panel shows all submissions
 
-### Deployment
+2. **With Live Server (127.0.0.1:5503)**:
+   - Static website works perfectly
+   - Contact form will show success message but won't actually send emails
+   - Login/Signup will show fallback messages
 
-#### For Heroku:
+## Production Deployment (Vercel)
 
-1. **Install Heroku CLI**
-2. **Create Heroku App**
-   ```bash
-   heroku create your-app-name
-   ```
+### Deploy to Vercel:
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run: `vercel`
+3. Follow the prompts
 
-3. **Set Environment Variables**
-   ```bash
-   heroku config:set NODE_ENV=production
-   heroku config:set EMAIL_USER=muhammadabdullahbaig3750@gmail.com
-   heroku config:set EMAIL_PASS="ytni oatr rlwu sxgq"
-   ```
+### Environment Variables (Optional):
+For production email functionality, add these to Vercel:
+- `EMAIL_SERVICE`: Your email service (e.g., 'gmail')
+- `EMAIL_USER`: Your email address
+- `EMAIL_PASS`: Your email password/app password
 
-4. **Deploy**
-   ```bash
-   git add .
-   git commit -m "Deploy to Heroku"
-   git push heroku main
-   ```
-
-#### For Vercel:
-
-1. **Install Vercel CLI**
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Deploy**
-   ```bash
-   vercel
-   ```
-
-3. **Set Environment Variables in Vercel Dashboard**
-   - `NODE_ENV=production`
-   - `EMAIL_USER=muhammadabdullahbaig3750@gmail.com`
-   - `EMAIL_PASS=ytni oatr rlwu sxgq`
-
-#### For Netlify:
-
-1. **Build the project**
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy to Netlify**
-   - Drag and drop the build folder to Netlify
-   - Or connect your GitHub repository
-
-3. **Set Environment Variables in Netlify Dashboard**
-
-### File Structure
+## File Structure
 
 ```
-├── server.js              # Main server file with email functionality
-├── package.json           # Dependencies and scripts
-├── .env                   # Environment variables (keep secure)
-├── .gitignore            # Git ignore file
-├── index.html            # Homepage
-├── Contact.html          # Contact page with form
-├── FAQs.html             # FAQ page
-├── Support.html          # Support/donation page
-├── About.html            # About page
-├── Blog.html             # Blog page
-├── courses.html          # Courses page
-├── index.css             # Main stylesheet
-└── Images/               # Image assets
+├── server.js              # Express server
+├── package.json           # Dependencies
+├── vercel.json            # Vercel configuration
+├── index.html             # Homepage
+├── Contact.html           # Contact page
+├── admin.html             # Admin panel
+├── start-server.bat       # Windows server starter
+└── README.md              # This file
 ```
 
-### Email Features
+## API Endpoints
 
-1. **Contact Form Submission**
-   - Validates all required fields
-   - Sends formatted email to your Gmail
-   - Includes all form data with professional styling
+- `POST /login` - User login
+- `POST /signup` - User registration
+- `POST /submit-form` - Contact form submission
+- `GET /api/contact-submissions` - Get all contact submissions (admin)
+- `GET /api/health` - Health check
 
-2. **Auto-Reply System**
-   - Sends confirmation email to the user
-   - Professional branded email template
-   - Includes submission summary
+## Contact Form
 
-3. **Email Templates**
-   - HTML formatted emails with your branding
-   - Responsive email design
-   - Professional styling with gradients and colors
+The contact form automatically detects the environment:
+- **Local development**: Sends to http://localhost:3000/submit-form
+- **Production**: Uses relative URLs for the deployed domain
+- **Live Server**: Shows success message with fallback
 
-### Security Notes
+## Admin Panel
 
-- App passwords are more secure than regular passwords
-- Environment variables protect sensitive data
-- Form validation prevents spam and invalid submissions
-- CORS enabled for cross-origin requests
+Visit `/admin.html` to view contact form submissions:
+- Real-time updates every 30 seconds
+- Shows all submission details
+- Works in both local and production environments
 
-### Troubleshooting
+## Troubleshooting
 
-1. **Email not sending:**
-   - Check Gmail app password is correct
-   - Ensure 2FA is enabled on Gmail account
-   - Verify internet connection
+### Contact form not working:
+1. Make sure the Node.js server is running on port 3000
+2. Check the browser console for errors
+3. Verify the server logs for submission details
 
-2. **Form not submitting:**
-   - Check browser console for errors
-   - Verify server is running on correct port
-   - Check network requests in browser dev tools
+### Server won't start:
+1. Run `npm install` to install dependencies
+2. Check if port 3000 is already in use
+3. Try running `node server.js` directly
 
-3. **Deployment issues:**
-   - Ensure environment variables are set correctly
-   - Check deployment platform logs
-   - Verify all dependencies are installed
+### Vercel deployment issues:
+1. Make sure all files are committed to git
+2. Check Vercel function logs for errors
+3. Verify vercel.json configuration
 
-### Support
+## Support
 
-For any issues or questions, contact: muhammadabdullahbaig3750@gmail.com
-
-## License
-
-MIT License - feel free to use and modify as needed.
+For issues or questions, contact: muhammadabdullahbaig3750@gmail.com

@@ -1,116 +1,155 @@
-# Coding Edge Website
+# Coding Edge - Contact Form Backend
 
-A modern, responsive website for coding education with full-stack functionality.
+A simple Node.js backend for the Coding Edge website with email functionality for contact forms.
 
 ## Features
 
-- **Responsive Design**: Works on all devices
-- **User Authentication**: Login/Signup functionality
-- **Contact Form**: Fully functional contact form with backend processing
-- **Testimonial Carousel**: Interactive testimonial slider
-- **Admin Panel**: View contact form submissions
-- **Dual Environment Support**: Works locally and on Vercel
+- ✅ **Contact Form Email**: Sends contact form submissions to your email
+- ✅ **Email Confirmations**: Sends confirmation emails to users
+- ✅ **User Authentication**: Basic signup and login functionality
+- ✅ **Deployment Ready**: Configured for Vercel deployment
+- ✅ **No Database Required**: Uses in-memory storage
 
-## Local Development
+## Quick Start
 
-### Prerequisites
-- Node.js (v14 or higher)
-- npm
+### 1. Install Dependencies
 
-### Setup
-1. Install dependencies:
+```bash
+npm install
+```
+
+### 2. Gmail App Password Setup
+
+1. Enable 2-Factor Authentication on your Gmail account
+2. Go to Google Account Settings > Security > App Passwords
+3. Generate an app password for "Mail"
+4. The app password is already configured in your .env file
+
+### 3. Run the Server
+
+**Development:**
+```bash
+npm run dev
+```
+
+**Production:**
+```bash
+npm start
+```
+
+The server will run on `http://localhost:3000`
+
+## How It Works
+
+When someone submits the contact form:
+
+1. **Admin Notification**: You receive an email at `muhammadabdullahbaig3750@gmail.com` with the contact details
+2. **User Confirmation**: The user receives a confirmation email thanking them for contacting you
+
+## API Endpoints
+
+### Contact Form
+- `POST /api/contact` - Submit contact form (sends emails)
+- `POST /submit-form` - Legacy endpoint (redirects to /api/contact)
+
+### Admin
+- `GET /api/contact-submissions` - View all contact submissions
+- `GET /health` - Health check endpoint
+- `GET /api/config-check` - Check server configuration
+
+### Authentication (Optional)
+- `POST /api/signup` - User registration
+- `POST /api/login` - User login
+
+## Contact Form Fields
+
+Required fields:
+- `name` - User's name
+- `email` - User's email
+- `subject` - Message subject
+- `message` - Message content
+
+Optional fields:
+- `phone` - User's phone number
+- `rating` - Rating (1-5 stars)
+
+## Deployment to Vercel
+
+1. **Install Vercel CLI:**
    ```bash
-   npm install
+   npm i -g vercel
    ```
 
-2. Start the server:
+2. **Deploy:**
    ```bash
-   npm start
+   vercel
    ```
-   Or double-click `start-server.bat` on Windows
 
-3. Open your browser and visit:
-   - Main website: http://localhost:3000
-   - Admin panel: http://localhost:3000/admin.html
+3. **Set Environment Variables in Vercel Dashboard:**
+   - `EMAIL_USER`: muhammadabdullahbaig3750@gmail.com
+   - `EMAIL_PASS`: ytni oatr rlwu sxgq
+   - `NODE_ENV`: production
+   - `FRONTEND_URL`: https://your-vercel-domain.vercel.app
 
-### How it works locally:
+## Testing
 
-1. **With Node.js server (localhost:3000)**:
-   - Full functionality including contact form
-   - Login/Signup works
-   - Contact submissions are logged to console
-   - Admin panel shows all submissions
+### Test the contact form:
+```bash
+curl -X POST http://localhost:3000/api/contact \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Test User",
+    "email": "test@example.com",
+    "subject": "Test Message",
+    "message": "This is a test message"
+  }'
+```
 
-2. **With Live Server (127.0.0.1:5503)**:
-   - Static website works perfectly
-   - Contact form will show success message but won't actually send emails
-   - Login/Signup will show fallback messages
-
-## Production Deployment (Vercel)
-
-### Deploy to Vercel:
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts
-
-### Environment Variables (Optional):
-For production email functionality, add these to Vercel:
-- `EMAIL_SERVICE`: Your email service (e.g., 'gmail')
-- `EMAIL_USER`: Your email address
-- `EMAIL_PASS`: Your email password/app password
+### Check server health:
+```bash
+curl http://localhost:3000/health
+```
 
 ## File Structure
 
 ```
-├── server.js              # Express server
-├── package.json           # Dependencies
-├── vercel.json            # Vercel configuration
-├── index.html             # Homepage
-├── Contact.html           # Contact page
-├── admin.html             # Admin panel
-├── start-server.bat       # Windows server starter
-└── README.md              # This file
+├── server.js                 # Main server file
+├── src/
+│   └── config/
+│       └── email.js          # Email configuration
+├── .env                      # Development environment
+├── .env.local               # Production environment
+├── vercel.json              # Vercel deployment config
+└── package.json             # Dependencies
 ```
 
-## API Endpoints
+## Environment Variables
 
-- `POST /login` - User login
-- `POST /signup` - User registration
-- `POST /submit-form` - Contact form submission
-- `GET /api/contact-submissions` - Get all contact submissions (admin)
-- `GET /api/health` - Health check
-
-## Contact Form
-
-The contact form automatically detects the environment:
-- **Local development**: Sends to http://localhost:3000/submit-form
-- **Production**: Uses relative URLs for the deployed domain
-- **Live Server**: Shows success message with fallback
-
-## Admin Panel
-
-Visit `/admin.html` to view contact form submissions:
-- Real-time updates every 30 seconds
-- Shows all submission details
-- Works in both local and production environments
+| Variable | Value | Description |
+|----------|-------|-------------|
+| `EMAIL_USER` | muhammadabdullahbaig3750@gmail.com | Gmail address for sending emails |
+| `EMAIL_PASS` | ytni oatr rlwu sxgq | Gmail app password |
+| `PORT` | 3000 | Server port |
+| `NODE_ENV` | development/production | Environment mode |
 
 ## Troubleshooting
 
-### Contact form not working:
-1. Make sure the Node.js server is running on port 3000
-2. Check the browser console for errors
-3. Verify the server logs for submission details
+### Email Not Working?
+1. Check if Gmail 2FA is enabled
+2. Verify the app password is correct
+3. Check the server logs for error messages
 
-### Server won't start:
-1. Run `npm install` to install dependencies
-2. Check if port 3000 is already in use
-3. Try running `node server.js` directly
-
-### Vercel deployment issues:
-1. Make sure all files are committed to git
-2. Check Vercel function logs for errors
-3. Verify vercel.json configuration
+### Deployment Issues?
+1. Ensure environment variables are set in Vercel
+2. Check the health endpoint: `https://your-domain.vercel.app/health`
+3. Review deployment logs in Vercel dashboard
 
 ## Support
 
-For issues or questions, contact: muhammadabdullahbaig3750@gmail.com
+The backend is now configured to:
+- Receive contact form submissions via email
+- Send confirmation emails to users
+- Work both locally and on deployment platforms
+- Handle CORS for frontend integration
+
+Your contact forms will be sent to: **muhammadabdullahbaig3750@gmail.com**

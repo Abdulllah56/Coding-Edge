@@ -8,20 +8,23 @@
   ],
   "routes": [
     {
+      "src": "/health",
+      "dest": "/server.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/server.js"
     },
     {
-      "src": "/(login|signup|submit-form)",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg))",
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg|html))",
       "dest": "/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/server.js"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }

@@ -2,26 +2,25 @@
   "name": "coding-edge-website",
   "version": "1.0.0",
   "description": "Coding Edge - Learn Programming with Expert Guidance",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "build": "echo 'No build step required'"
+    "start": "echo 'Static site with serverless functions - deploy to Vercel'",
+    "dev": "vercel dev",
+    "build": "echo 'No build step required - Vercel handles serverless functions'"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
     "nodemailer": "^6.9.7"
   },
-  "engines": {
-    "node": ">=14.0.0"
+  "devDependencies": {
+    "vercel": "^32.0.0"
   },
   "keywords": [
     "coding",
     "programming",
     "education",
-    "website"
+    "website",
+    "static",
+    "serverless"
   ],
   "author": "Coding Edge",
   "license": "MIT"

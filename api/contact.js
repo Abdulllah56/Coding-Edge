@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 // In-memory storage for demo (in production, use a database)
 let contactSubmissions = [];
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     if (emailConfigured) {
       try {
         // Create transporter
-        const transporter = nodemailer.createTransporter({
+        const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
             user: process.env.EMAIL_USER,
